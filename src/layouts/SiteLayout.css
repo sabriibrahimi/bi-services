@@ -1,0 +1,27 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.site-main {
+  flex: 1 0 auto;
+  animation: page-in var(--dur-mid) var(--ease-out) both;
+}
+
+.site-main:focus {
+  outline: none;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-main {
+    animation: none;
+  }
+}

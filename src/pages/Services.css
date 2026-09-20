@@ -1,0 +1,172 @@
+.service {
+  padding-block: clamp(2.5rem, 7vw, 5.5rem);
+  border-top: 1px solid var(--c-rule);
+}
+
+.service--b {
+  background-color: var(--c-paper);
+}
+
+.service__grid {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+.service__number {
+  font-family: var(--font-display);
+  font-size: var(--fs-numeral);
+  line-height: 0.9;
+  color: var(--c-stone-400);
+  margin-bottom: var(--space-md);
+}
+
+.service__title {
+  font-size: var(--fs-h2);
+  max-width: 16ch;
+  margin-bottom: var(--space-lg);
+}
+
+.service__body {
+  color: var(--c-text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.service__subtitle {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--c-rule);
+}
+
+/* --- Process -------------------------------------------------------------- */
+
+.steps {
+  display: grid;
+  gap: var(--space-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps__item {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.steps__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.steps__index {
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  color: var(--c-oak-deep);
+  padding-top: 0.35rem;
+}
+
+.steps__title {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.steps__body {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  max-width: 48ch;
+}
+
+/* --- Materials ------------------------------------------------------------ */
+
+.materials {
+  display: grid;
+  gap: 0;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  list-style: none;
+}
+
+.materials__item {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--c-rule);
+  font-size: var(--fs-sm);
+}
+
+.materials__item::before {
+  content: '—';
+  color: var(--c-oak);
+  margin-right: 0.6rem;
+}
+
+.materials__note {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  max-width: 40ch;
+}
+
+/* --- Desktop composition -------------------------------------------------- */
+
+@media (min-width: 62rem) {
+  .service__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+    row-gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  /* Variant A — text left, tall photograph right, detail shot tucked under. */
+  .service--a .service__head {
+    grid-column: 1 / span 6;
+  }
+
+  .service--a .service__media {
+    grid-column: 8 / span 5;
+    grid-row: 1 / span 2;
+  }
+
+  .service--a .service__process {
+    grid-column: 1 / span 6;
+  }
+
+  .service--a .service__materials {
+    grid-column: 8 / span 5;
+  }
+
+  .service--a .service__detail {
+    grid-column: 1 / span 6;
+    align-self: end;
+  }
+
+  /* Variant B — photograph leads on the left, text steps in from the right. */
+  .service--b .service__media {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 2;
+  }
+
+  .service--b .service__head {
+    grid-column: 7 / span 6;
+  }
+
+  .service--b .service__process {
+    grid-column: 7 / span 6;
+  }
+
+  .service--b .service__materials {
+    grid-column: 1 / span 5;
+  }
+
+  .service--b .service__detail {
+    grid-column: 7 / span 6;
+    align-self: end;
+  }
+}

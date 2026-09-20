@@ -1,0 +1,69 @@
+# Build the site and publish it to GitHub Pages on every push to the main
+# branch, and on demand from the Actions tab.
+#
+# The two build variables are derived from the repository itself, so nothing
+# here has to be edited if the repository is renamed or transferred:
+#
+#   VITE_BASE         the repository name -> the site is served at /<repo>/
+#   VITE_SITE_ORIGIN  https://<owner>.github.io
+#
+# Together they make every canonical URL, hreflang tag, sitemap entry, asset
+# path and router link resolve correctly under the Pages sub-path.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# GITHUB_TOKEN needs to write Pages and mint an OIDC token to deploy.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Work out where the site will live
+        id: target
+        run: |
+          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "base=${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
+          echo "origin=https://${owner}.github.io" >> "$GITHUB_OUTPUT"
+
+      - run: npm ci
+
+      - name: Build
+        env:
+          VITE_BASE: ${{ steps.target.outputs.base }}
+          VITE_SITE_ORIGIN: ${{ steps.target.outputs.origin }}
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,91 @@
+.media {
+  position: relative;
+  aspect-ratio: var(--media-ratio, 4 / 3);
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--c-linen);
+}
+
+/* While an image is full width — every phone, and a tablet up to 62rem — a tall
+   desktop crop turns into a slab taller than the screen. Until the layout puts
+   the image in a column beside something else, each one may fall back to a
+   wider crop; the photograph is unchanged, only how much of it is shown.
+   Components that go multi-column earlier, at 52rem, take their desktop crop
+   back there — see the grids in Home.css, Projects.css and ProjectDetail.css. */
+@media (max-width: 61.999rem) {
+  .media {
+    aspect-ratio: var(--media-ratio-sm, var(--media-ratio, 4 / 3));
+  }
+}
+
+.media--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Placeholder ---------------------------------------------------------- */
+
+.media--placeholder {
+  display: flex;
+  align-items: flex-end;
+  --ph-ink: rgba(27, 25, 23, 0.7);
+  --ph-frame: rgba(27, 25, 23, 0.16);
+}
+
+.media--linen {
+  background-color: var(--c-linen);
+}
+
+.media--bone {
+  background-color: var(--c-bone);
+}
+
+.media--stone {
+  background-color: var(--c-stone-200);
+}
+
+.media--oak {
+  background-color: var(--c-oak);
+  --ph-ink: rgba(24, 16, 8, 0.88);
+  --ph-frame: rgba(24, 16, 8, 0.22);
+}
+
+.media--walnut {
+  background-color: var(--c-walnut);
+  --ph-ink: rgba(247, 240, 231, 0.8);
+  --ph-frame: rgba(247, 240, 231, 0.24);
+}
+
+.media--charcoal {
+  background-color: var(--c-charcoal);
+  --ph-ink: rgba(239, 233, 223, 0.66);
+  --ph-frame: rgba(239, 233, 223, 0.18);
+}
+
+/* A single hairline frame reads as a deliberate reserved space rather than a
+   broken image. */
+.media__frame {
+  position: absolute;
+  inset: clamp(0.5rem, 1.6vw, 1.25rem);
+  border: 1px solid var(--ph-frame);
+  pointer-events: none;
+}
+
+.media__label {
+  position: relative;
+  margin: clamp(1.25rem, 3vw, 2.25rem);
+  max-width: 28ch;
+  color: var(--ph-ink);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* Overlay content (project captions, lightbox triggers) sits above the image. */
+.media > .media__overlay {
+  position: absolute;
+  inset: 0;
+}

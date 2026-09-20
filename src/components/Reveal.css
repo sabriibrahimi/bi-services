@@ -1,0 +1,23 @@
+.reveal {
+  transition: opacity var(--dur-slow) var(--ease-editorial),
+    transform var(--dur-slow) var(--ease-editorial);
+}
+
+.reveal.is-hidden {
+  opacity: 0;
+  transform: translate3d(0, 1.25rem, 0);
+}
+
+.reveal.is-shown,
+.reveal.is-static {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-hidden {
+    opacity: 1;
+    transform: none;
+  }
+}

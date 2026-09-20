@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="BI SERVICES Sàrl">
+  <rect width="64" height="64" fill="#1b1917"/>
+  <g transform="translate(6 17) scale(0.26)" fill="#f1ece4">
+    <g fill="none" stroke="#f1ece4" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M94 44C82 25 61 16 45 23c-13 6-17 20-8 28 7 6 17 4 19-3 1-4-1-7-5-8"/>
+    </g>
+    <path d="M108 76 94 38l13-5 16 43z"/>
+    <path d="M136 76c1-17 8-29 20-35 11-6 23-1 26 9 2 8-1 16-9 20l-8-13c3-2 5-5 4-8-2-4-7-5-11-2-6 4-10 14-10 29z"/>
+    <path d="M30 76h148c10 0 18 8 18 18s-8 18-18 18H26c-10 0-18-8-18-18 0-8 6-14 16-18z"/>
+  </g>
+  <rect x="8" y="50" width="48" height="3" fill="#b0824b"/>
+</svg>

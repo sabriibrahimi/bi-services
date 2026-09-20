@@ -1,0 +1,308 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--c-bone);
+  transition: box-shadow var(--dur-mid) var(--ease-out),
+    background-color var(--dur-mid) var(--ease-out);
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 1px 0 var(--c-rule);
+  background-color: rgba(241, 236, 228, 0.94);
+  backdrop-filter: saturate(1.1) blur(6px);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  min-height: var(--header-height);
+}
+
+/* --- Desktop navigation --------------------------------------------------- */
+
+.site-header__nav {
+  display: none;
+}
+
+.site-header__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.6vw, 2.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header__link {
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.site-header__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.15rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-mid) var(--ease-editorial);
+}
+
+.site-header__link:hover {
+  color: var(--c-text);
+}
+
+.site-header__link:hover::after {
+  transform: scaleX(1);
+}
+
+.site-header__link.is-active {
+  color: var(--c-text);
+}
+
+.site-header__link.is-active::after {
+  transform: scaleX(1);
+  background: var(--c-oak);
+  height: 2px;
+}
+
+/* --- Right-hand side ------------------------------------------------------ */
+
+.site-header__aside {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.75rem);
+}
+
+.site-header__phone {
+  display: none;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mid);
+  white-space: nowrap;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.site-header__phone:hover {
+  border-bottom-color: var(--c-oak);
+}
+
+.site-header__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: -0.6rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.burger {
+  display: block;
+  position: relative;
+  width: 1.4rem;
+  height: 0.65rem;
+}
+
+.burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--c-text);
+  transition: transform var(--dur-mid) var(--ease-editorial),
+    opacity var(--dur-fast) var(--ease-out);
+}
+
+.burger span:first-child {
+  top: 0;
+}
+
+.burger span:last-child {
+  bottom: 0;
+}
+
+.burger.is-open span:first-child {
+  transform: translateY(0.32rem) rotate(45deg);
+}
+
+.burger.is-open span:last-child {
+  transform: translateY(-0.32rem) rotate(-45deg);
+}
+
+/* --- Drawer --------------------------------------------------------------- */
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+}
+
+.drawer__scrim {
+  position: absolute;
+  inset: 0;
+  order: 2;
+  background: rgba(16, 15, 14, 0.42);
+  border: 0;
+  cursor: pointer;
+  animation: drawer-fade var(--dur-mid) var(--ease-out) both;
+}
+
+.drawer__panel {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 2;
+  width: min(24rem, 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  padding: calc(var(--header-height) + var(--space-xl)) var(--gutter) var(--space-2xl);
+  background: var(--c-paper);
+  border-left: 1px solid var(--c-rule);
+  overflow-y: auto;
+  animation: drawer-in var(--dur-mid) var(--ease-editorial) both;
+}
+
+/* Sits exactly where the header's menu button was, so the close control is
+   under the thumb that opened the drawer. */
+.drawer__close {
+  position: absolute;
+  top: calc((var(--header-height) - 2.75rem) / 2);
+  right: calc(var(--gutter) - 0.6rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(3%);
+    opacity: 0;
+  }
+}
+
+@keyframes drawer-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.drawer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.drawer__link {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding: 0.5rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.4rem + 2vw, 2.5rem);
+  line-height: 1.15;
+  color: var(--c-text);
+  border-bottom: 1px solid transparent;
+}
+
+.drawer__link.is-active {
+  color: var(--c-oak-deep);
+}
+
+.drawer__index {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  color: var(--c-stone-400);
+}
+
+.drawer__foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--c-rule);
+}
+
+.drawer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  font-size: var(--fs-sm);
+}
+
+.drawer__contact a {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid transparent;
+  width: fit-content;
+}
+
+.drawer__contact a:hover {
+  border-bottom-color: var(--c-oak);
+}
+
+/* --- Breakpoints ---------------------------------------------------------- */
+
+/* The wordmark, the language pair and the menu button need 317px of row to sit
+   at full size: that is more than a 320px phone has between the gutters. Rather
+   than let the row overflow (or wrap), the header sets itself slightly smaller
+   on the narrowest screens. */
+@media (max-width: 23rem) {
+  .site-header__inner {
+    gap: var(--space-sm);
+  }
+
+  .site-header .wordmark {
+    gap: 0.45rem;
+  }
+
+  .site-header .wordmark__mark {
+    width: 1.9rem;
+  }
+
+  .site-header .wordmark__name {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media (min-width: 62rem) {
+  .site-header__nav {
+    display: block;
+  }
+
+  .site-header__phone {
+    display: inline-block;
+  }
+
+  .site-header__toggle,
+  .drawer {
+    display: none;
+  }
+}

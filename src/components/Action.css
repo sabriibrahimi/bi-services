@@ -1,0 +1,106 @@
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: left;
+  transition: color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.action__arrow {
+  width: 1.5rem;
+  height: 0.75rem;
+  flex: none;
+  transition: transform var(--dur-mid) var(--ease-editorial);
+}
+
+.action:hover .action__arrow {
+  transform: translateX(0.35rem);
+}
+
+/* --- Solid ---------------------------------------------------------------- */
+
+.action--solid {
+  background-color: var(--c-charcoal);
+  color: var(--c-paper);
+  padding: 1.15em 1.9em;
+  border-radius: var(--radius);
+}
+
+.action--solid:hover {
+  background-color: var(--c-oak-deep);
+}
+
+.is-dark .action--solid {
+  background-color: var(--c-paper);
+  color: var(--c-charcoal);
+}
+
+.is-dark .action--solid:hover {
+  background-color: var(--c-oak);
+  color: var(--c-ink);
+}
+
+/* --- Outline -------------------------------------------------------------- */
+
+.action--outline {
+  padding: 1.15em 1.9em;
+  border: 1px solid var(--c-rule-strong);
+  border-radius: var(--radius);
+  color: var(--c-text);
+}
+
+.action--outline:hover {
+  border-color: var(--c-text);
+  background-color: rgba(27, 25, 23, 0.04);
+}
+
+.is-dark .action--outline:hover {
+  background-color: rgba(239, 233, 223, 0.08);
+}
+
+/* --- Text ----------------------------------------------------------------- */
+
+.action--text {
+  padding: 0.35em 0;
+  color: var(--c-text);
+  border-bottom: 1px solid var(--c-rule-strong);
+}
+
+.action--text:hover {
+  color: var(--c-oak-deep);
+  border-bottom-color: currentColor;
+}
+
+.is-dark .action--text:hover {
+  color: var(--c-oak);
+}
+
+/* --- Sizes ---------------------------------------------------------------- */
+
+.action--sm {
+  font-size: var(--fs-xs);
+}
+
+.action--lg {
+  font-size: var(--fs-sm);
+  padding: 1.35em 2.4em;
+}
+
+@media (max-width: 30rem) {
+  .action--solid,
+  .action--outline {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,155 @@
+/* --- Filters -------------------------------------------------------------- */
+
+.filters {
+  display: grid;
+  gap: var(--space-md);
+  padding-bottom: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.filters__label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.filters__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-lg);
+}
+
+.filters__item {
+  position: relative;
+  background: none;
+  border: 0;
+  padding: 0.55rem 0;
+  cursor: pointer;
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+  /* Reserve the weight change so the row never reflows when a filter is picked. */
+  min-width: max-content;
+}
+
+.filters__item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.2rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-mid) var(--ease-editorial);
+}
+
+.filters__item:hover {
+  color: var(--c-text);
+}
+
+.filters__item:hover::after {
+  transform: scaleX(1);
+}
+
+.filters__item.is-active {
+  color: var(--c-text);
+}
+
+.filters__item.is-active::after {
+  background: var(--c-oak);
+  height: 2px;
+  transform: scaleX(1);
+}
+
+.filters__count {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+/* --- Grid ----------------------------------------------------------------- */
+
+.project-grid {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+.projects__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: clamp(2.5rem, 8vw, 5rem) 0;
+  border-top: 1px solid var(--c-rule);
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.projects__empty-title {
+  font-size: var(--fs-h3);
+  max-width: 20ch;
+}
+
+.projects__empty-body {
+  color: var(--c-text-muted);
+  max-width: 44ch;
+}
+
+/* The extra height goes above the label so the active underline stays tight
+   against the text. */
+@media (pointer: coarse) {
+  .filters__item {
+    padding-top: 0.95rem;
+  }
+}
+
+@media (min-width: 52rem) {
+  /* Back in columns: the crops go back to the composed desktop ratios. */
+  .project-grid .media {
+    aspect-ratio: var(--media-ratio, 4 / 3);
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+    row-gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  /* A repeating six-item rhythm: wide, narrow-and-dropped, indented, and so on.
+     Any number of projects keeps the same varied cadence. */
+  .project-grid__item:nth-child(6n + 1) {
+    grid-column: 1 / span 7;
+  }
+
+  .project-grid__item:nth-child(6n + 2) {
+    grid-column: 9 / span 4;
+    padding-top: clamp(2rem, 6vw, 5rem);
+  }
+
+  .project-grid__item:nth-child(6n + 3) {
+    grid-column: 2 / span 5;
+  }
+
+  .project-grid__item:nth-child(6n + 4) {
+    grid-column: 8 / span 5;
+    padding-top: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .project-grid__item:nth-child(6n + 5) {
+    grid-column: 1 / span 6;
+  }
+
+  .project-grid__item:nth-child(6n + 6) {
+    grid-column: 8 / span 4;
+    padding-top: clamp(2rem, 5vw, 4rem);
+  }
+}

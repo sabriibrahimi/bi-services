@@ -1,0 +1,7 @@
+# Netlify / Cloudflare Pages redirect rules.
+# "/" belongs to no language: send visitors to the French site.
+/            /fr/    302
+/index.html  /fr/    302
+
+# Unknown URLs fall back to the prerendered 404 page.
+/*           /404.html  404

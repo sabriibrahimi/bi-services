@@ -1,0 +1,126 @@
+.ba {
+  position: relative;
+}
+
+.ba__stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--c-linen);
+}
+
+.ba__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ba__clip {
+  position: absolute;
+  inset: 0;
+  width: var(--ba-position, 50%);
+  overflow: hidden;
+}
+
+.ba__clip .ba__image {
+  width: 100cqw;
+}
+
+/* The before image must not shrink with its clipping container. */
+.ba__stage {
+  container-type: inline-size;
+}
+
+.ba__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--ba-position, 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.ba__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--c-paper);
+  box-shadow: 0 0 0 1px rgba(16, 15, 14, 0.18);
+}
+
+.ba__grip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--c-paper);
+  color: var(--c-charcoal);
+}
+
+.ba__grip svg {
+  width: 1.15rem;
+  height: 0.6rem;
+}
+
+.ba__tag {
+  position: absolute;
+  bottom: var(--space-md);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  background: rgba(16, 15, 14, 0.7);
+  color: var(--c-on-dark);
+  padding: 0.35rem 0.6rem;
+}
+
+.ba__tag--before {
+  left: var(--space-md);
+}
+
+.ba__tag--after {
+  right: var(--space-md);
+}
+
+/* The range input lies over the image: invisible track, visible focus ring. */
+.ba__range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: ew-resize;
+}
+
+.ba__range:focus-visible {
+  outline: 2px solid var(--c-oak);
+  outline-offset: 3px;
+}
+
+.ba__range::-webkit-slider-thumb {
+  appearance: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: transparent;
+  cursor: ew-resize;
+}
+
+.ba__range::-moz-range-thumb {
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: ew-resize;
+}

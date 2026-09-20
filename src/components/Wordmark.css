@@ -1,0 +1,69 @@
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--c-text);
+}
+
+.wordmark__mark {
+  width: 2.35rem;
+  height: auto;
+  flex: none;
+  color: inherit;
+}
+
+.wordmark__type {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.wordmark__name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.wordmark__legal {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1em;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--c-text-muted);
+}
+
+.wordmark__baseline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  color: var(--c-oak);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* --- Sizes ---------------------------------------------------------------- */
+
+.wordmark--lg {
+  gap: 0.85rem;
+}
+
+.wordmark--lg .wordmark__mark {
+  width: clamp(2.75rem, 2.2rem + 1.6vw, 3.5rem);
+}
+
+.wordmark--lg .wordmark__name {
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  letter-spacing: 0.12em;
+}
+
+.wordmark--lg .wordmark__baseline {
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
+}

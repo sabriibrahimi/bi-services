@@ -1,0 +1,11 @@
+# Normalise text to LF in the repository, whatever the checkout platform does.
+* text=auto eol=lf
+
+# Binary assets must never be line-ending converted.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
+*.woff binary
+*.woff2 binary

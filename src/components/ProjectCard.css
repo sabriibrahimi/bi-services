@@ -1,0 +1,74 @@
+.project-card {
+  position: relative;
+}
+
+.project-card__link {
+  display: block;
+}
+
+.project-card__media {
+  transition: transform var(--dur-slow) var(--ease-editorial);
+}
+
+.project-card__media img {
+  transition: transform var(--dur-slow) var(--ease-editorial),
+    filter var(--dur-mid) var(--ease-out);
+}
+
+.project-card__link:hover .project-card__media img {
+  transform: scale(1.03);
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-top: var(--space-md);
+}
+
+.project-card__title {
+  font-size: var(--fs-h4);
+  line-height: 1.15;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.project-card--lg .project-card__title {
+  font-size: var(--fs-h3);
+}
+
+.project-card__link:hover .project-card__title {
+  color: var(--c-oak-deep);
+}
+
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.project-card__service {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  max-width: 34ch;
+}
+
+/* A thin rule under the caption keeps the grid architectural without boxing
+   each project into a card. */
+.project-card__body::after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin-top: var(--space-md);
+  background: var(--c-rule);
+  transform: scaleX(0.18);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-editorial);
+}
+
+.project-card__link:hover .project-card__body::after {
+  transform: scaleX(1);
+}

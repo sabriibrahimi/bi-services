@@ -1,0 +1,112 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background: rgba(16, 15, 14, 0.96);
+  color: var(--c-on-dark);
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  animation: lightbox-in var(--dur-mid) var(--ease-out) both;
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.lightbox__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: transparent;
+  border: 0;
+  cursor: zoom-out;
+}
+
+.lightbox__bar,
+.lightbox__figure,
+.lightbox__nav {
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+
+.lightbox__counter {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-mid);
+  text-transform: uppercase;
+  color: var(--c-on-dark-muted);
+}
+
+.lightbox__close,
+.lightbox__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: 1px solid var(--c-rule-dark);
+  color: inherit;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.lightbox__close svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.lightbox__arrow svg {
+  width: 1.5rem;
+  height: 0.75rem;
+}
+
+.lightbox__close:hover,
+.lightbox__arrow:hover {
+  border-color: var(--c-oak);
+  background-color: rgba(176, 130, 75, 0.12);
+}
+
+.lightbox__figure {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin: 0;
+  min-height: 0;
+}
+
+.lightbox__figure img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.lightbox__caption {
+  font-size: var(--fs-sm);
+  color: var(--c-on-dark-muted);
+  text-align: center;
+  max-width: 60ch;
+}
+
+.lightbox__nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+}
