@@ -206,14 +206,48 @@ text), imported in `src/main.jsx`. Nothing is loaded from Google's servers.
 
 ## Deployment
 
-The site is a folder of static files. Two host-specific files are included:
+The site is a folder of static files. `/` is a prerendered page carrying a meta
+refresh to `/fr/`, and `404.html` sits at the root, so it works on any static
+host without redirect rules. Two host-specific files add proper redirects where
+they are supported:
 
 - `public/_redirects` — Netlify and Cloudflare Pages: `/` → `/fr/`, unknown URLs
   → the 404 page.
 - `vercel.json` — the same redirect for Vercel.
 
-Set `site.domain` in `src/config/site.js` before the first production build:
-canonical URLs, `hreflang`, Open Graph tags and the sitemap all derive from it.
+### Where the site lives
+
+Two build-time variables decide the URLs, and nothing else in the source needs
+editing to move the site:
+
+| Variable | Example | Effect |
+| --- | --- | --- |
+| `VITE_BASE` | `bi-services` | Serves the site under `/bi-services/`. Omit for a domain root. Accepted with or without slashes. |
+| `VITE_SITE_ORIGIN` | `https://you.github.io` | Scheme and host for canonical URLs, `hreflang`, Open Graph tags and the sitemap. |
+
+`src/config/deployment.js` reads them — from `import.meta.env` in the app, from
+`process.env` in the Node scripts — and exposes `basePath`, `origin`,
+`asset()` and `absolute()`. React Router gets the same value as its `basename`,
+so every `<Link>` is prefixed automatically; raw hrefs and public-folder paths
+go through `asset()`.
+
+Neither variable is set by `npm run dev`, so local development stays at `/`
+with the placeholder domain, and the build warns while the origin is unset.
+
+### GitHub Pages
+
+`.github/workflows/deploy.yml` builds and publishes on every push to `main`. It
+derives both variables from the repository itself, so renaming or transferring
+the repository needs no edit:
+
+```yaml
+VITE_BASE: ${{ github.event.repository.name }}
+VITE_SITE_ORIGIN: https://<owner lowercased>.github.io
+```
+
+One manual step is needed once, in the repository: **Settings → Pages →
+Build and deployment → Source: GitHub Actions**. The site then appears at
+`https://<owner>.github.io/<repo>/`.
 
 ## A note on versions
 
