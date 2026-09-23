@@ -9,8 +9,29 @@
 
 .site-header.is-scrolled {
   box-shadow: 0 1px 0 var(--c-rule);
+  background-color: transparent;
+}
+
+/* The frosted background sits on a pseudo-element, never on the header itself:
+   backdrop-filter makes its element the containing block for every
+   position: fixed descendant, and the mobile drawer is one. On the header, the
+   full-screen drawer would shrink to the header's own 72px as soon as the page
+   was scrolled. */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background-color: rgba(241, 236, 228, 0.94);
   backdrop-filter: saturate(1.1) blur(6px);
+  -webkit-backdrop-filter: saturate(1.1) blur(6px);
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+  pointer-events: none;
+}
+
+.site-header.is-scrolled::before {
+  opacity: 1;
 }
 
 .site-header__inner {
