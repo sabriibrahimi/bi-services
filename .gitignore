@@ -7,3 +7,7 @@ dist
 
 # Claude Code session files
 .claude
+
+# Videos are not used by the site
+*.mp4
+*.mov
