@@ -5,6 +5,7 @@ import { content } from '../data/content.js'
 import { featuredProjects } from '../data/projects.js'
 import { t, useLanguage } from '../utils/i18n.js'
 import { siteImage } from '../utils/siteImage.js'
+import { pageImage } from '../utils/pageImage.js'
 import Action from '../components/Action.jsx'
 import ContactStrip from '../components/ContactStrip.jsx'
 import Media from '../components/Media.jsx'
@@ -47,7 +48,8 @@ export default function Home() {
             {...siteImage('hero', content.home.heroPlaceholder)}
             tone="charcoal"
             ratio="4 / 3"
-            sizes="100vw"
+            sizes="(min-width: 120rem) 120rem, 100vw"
+            objectPosition="50% 62%"
             priority
           />
 
@@ -123,7 +125,7 @@ export default function Home() {
                 <Link className="service-teaser__link" to={path('services', lang)}>
                   <Media
                     className="service-teaser__media"
-                    {...siteImage(service.photo, service.imagePlaceholder)}
+                    {...pageImage(service.photo, service.imagePlaceholder)}
                     tone={index % 2 === 0 ? 'walnut' : 'stone'}
                     ratio={index % 2 === 0 ? '4 / 5' : '5 / 4'}
                     ratioSm={index % 2 === 0 ? '4 / 3' : '3 / 2'}
@@ -162,14 +164,10 @@ export default function Home() {
             {projects.map((project, index) => (
               <Reveal
                 key={project.slug[lang]}
-                className={`featured__item featured__item--${index + 1}`}
-                delay={(index % 3) * 60}
+                className="featured__item"
+                delay={(index % 2) * 90}
               >
-                <ProjectCard
-                  project={project}
-                  index={index}
-                  size={index === 0 ? 'lg' : index === 2 ? 'sm' : 'md'}
-                />
+                <ProjectCard project={project} index={index} />
               </Reveal>
             ))}
           </div>

@@ -74,36 +74,115 @@ export const content = {
       en: 'Daylight crossing a room and running along a pale wooden floor',
     },
     'intro-principale': {
-      fr: 'Ombres losangées dessinées par le soleil sur un plancher en bois',
-      en: 'Diamond shadows cast by the sun across a wooden floor',
+      fr: 'Pièce lumineuse et vide, parquet en chêne clair et grandes fenêtres',
+      en: 'Bright empty room with light oak flooring and tall windows',
     },
     'intro-detail': {
       fr: 'Surface de chêne vue de près, veinage et joints entre les lames',
       en: 'Oak surface seen close up, grain and joints between the boards',
     },
     'parquet-principale': {
-      fr: 'Parquet à bâtons rompus avec une finition satinée',
-      en: 'Herringbone parquet with a satin finish',
+      fr: 'Pièce contemporaine lumineuse, parquet en chêne clair et grandes baies vitrées',
+      en: 'Bright contemporary room with light oak parquet and large glazed doors',
     },
     'parquet-detail': {
-      fr: 'Motif d’un parquet vu de près',
-      en: 'Close-up of a parquet pattern',
-    },
-    'souples-principale': {
-      fr: 'Revêtement de sol textile vu de près, armure tissée',
-      en: 'Textile floor covering seen close up, woven structure',
-    },
-    'souples-detail': {
-      fr: 'Revêtement de sol textile dans un ton chaud',
-      en: 'Textile floor covering in a warm tone',
-    },
-    contact: {
-      fr: 'Intérieur clair avec mur en briques et plancher en bois',
-      en: 'Bright interior with a brick wall and a wooden floor',
+      fr: 'Parquet à bâtons rompus en chêne pâle, une chaise en rotin contre un mur blanc',
+      en: 'Pale oak herringbone parquet, a rattan chair against a white wall',
     },
     introuvable: {
       fr: 'Lames de plancher en bois vues du dessus',
       en: 'Wooden floorboards seen from above',
+    },
+  },
+
+  /**
+   * Alternative text for the client's own photographs of each covering
+   * (src/data/materialPhotos.js). They show the material, not a named job.
+   */
+  materialAlt: {
+    'lino-salle': {
+      fr: 'Bureau revêtu d’un linoléum gris anthracite, deux fenêtres au fond',
+      en: 'Office floored in charcoal linoleum, two windows on the far wall',
+    },
+    'lino-pose': {
+      fr: 'Rouleau de linoléum déroulé sur le support ragréé',
+      en: 'A roll of linoleum being unrolled over the levelled subfloor',
+    },
+    'lino-ragreage': {
+      fr: 'Ragréage autolissant coulé avant la pose du revêtement',
+      en: 'Self-levelling compound poured before the covering is laid',
+    },
+    'moquette-damier': {
+      fr: 'Couloir en dalles de moquette posées en damier, deux tons de gris',
+      en: 'Corridor in carpet tiles laid in a two-tone grey checkerboard',
+    },
+    'moquette-couloir': {
+      fr: 'Long couloir de bureaux revêtu de moquette sombre',
+      en: 'Long office corridor finished in dark carpet',
+    },
+    'vinyle-surface': {
+      fr: 'Sol en dalles de vinyle aspect pierre claire dans un local commercial',
+      en: 'Stone-look vinyl tiles across a commercial floor',
+    },
+    'vinyle-dalles': {
+      fr: 'Dalles de vinyle aspect pierre vues de près',
+      en: 'Stone-look vinyl tiles seen close up',
+    },
+    'lino-fenetres': {
+      fr: 'Bureau en linoléum gris, vu depuis la porte, fenêtres au fond',
+      en: 'Office in grey linoleum seen from the doorway, windows beyond',
+    },
+    'lino-vue': {
+      fr: 'Grande pièce revêtue de linoléum gris, pilier central et fenêtres',
+      en: 'Large room floored in grey linoleum, a central column and windows',
+    },
+    'moquette-bureau': {
+      fr: 'Bureau vide revêtu de dalles de moquette bleues',
+      en: 'Empty office finished in blue carpet tiles',
+    },
+    'moquette-bureau-porte': {
+      fr: 'Bureau en dalles de moquette bleues, vu depuis la porte',
+      en: 'Office in blue carpet tiles, seen from the doorway',
+    },
+    'moquette-tapis': {
+      fr: 'Tapis d’entrée rond encastré dans un sol en pierre, devant des portes vitrées',
+      en: 'Round entrance mat set into a stone floor, in front of glazed doors',
+    },
+    'moquette-estrade': {
+      fr: 'Estrade à gradins revêtue de moquette noire, avec profilés de nez de marche',
+      en: 'Stepped platform clad in black carpet, with stair-nosing profiles',
+    },
+    'moquette-cloisons': {
+      fr: 'Couloir en moquette sombre entre des cloisons vitrées',
+      en: 'Corridor in dark carpet between glazed partitions',
+    },
+    'moquette-marche': {
+      fr: 'Marche revêtue de moquette sombre avec profilé métallique',
+      en: 'Step finished in dark carpet with a metal edge profile',
+    },
+    'moquette-plateau': {
+      fr: 'Grand plateau de bureaux revêtu de moquette grise',
+      en: 'Open-plan office floor finished in grey carpet',
+    },
+    'moquette-escalier': {
+      fr: 'Escalier en cours d’habillage en dalles de moquette bleues',
+      en: 'Staircase being finished in blue carpet tiles',
+    },
+    'moquette-bureau-meuble': {
+      fr: 'Bureau meublé, moquette gris anthracite fraîchement posée',
+      en: 'Furnished office with newly laid charcoal carpet',
+    },
+    'vinyle-local': {
+      fr: 'Local commercial en dalles de vinyle aspect pierre, vue d’ensemble',
+      en: 'Commercial unit in stone-look vinyl tiles, wide view',
+    },
+    'vinyle-vitrine': {
+      fr: 'Sol en vinyle aspect pierre devant la vitrine d’un local commercial',
+      en: 'Stone-look vinyl floor in front of a shopfront',
+    },
+    'vinyle-pose': {
+      fr: 'Pose de dalles de vinyle en cours, échantillons sur le support',
+      en: 'Vinyl tiles being laid, samples set out on the subfloor',
     },
   },
 
@@ -277,6 +356,7 @@ export const content = {
     },
     processLabel: { fr: 'Déroulement', en: 'Process' },
     materialsLabel: { fr: 'Matériaux', en: 'Materials' },
+    rangeLabel: { fr: 'Revêtements', en: 'Coverings' },
     materialsNote: {
       fr: 'Le choix final dépend de l’usage de la pièce, du support et du budget. Nous en discutons sur place.',
       en: 'The final choice depends on how the room is used, on the subfloor and on the budget. We discuss it on site.',
@@ -299,10 +379,14 @@ export const content = {
     {
       id: 'parquet',
       number: '01',
-      /** Keys in src/data/siteImages.js (licensed images, see CREDITS.md). */
+      /**
+       * Image names, resolved by src/utils/pageImage.js. `photo` is the home
+       * page teaser; `lead` opens the service on the services page; `detail`
+       * sits beside the materials.
+       */
       photo: 'parquet-principale',
-      photoSecondary: 'parquet-principale',
-      photoDetail: 'parquet-detail',
+      lead: 'parquet-principale',
+      detail: 'parquet-detail',
       title: {
         fr: 'Pose, ponçage et imprégnation de parquet',
         en: 'Parquet installation, sanding and sealing',
@@ -386,9 +470,42 @@ export const content = {
     {
       id: 'souples',
       number: '02',
-      photo: 'souples-principale',
-      photoSecondary: 'souples-principale',
-      photoDetail: 'souples-detail',
+      photo: 'moquette-damier',
+      lead: 'lino-pose',
+      /**
+       * The coverings, each shown with the client's own photographs of it
+       * (photos-source/PVC-Lino, Moquette, Vinyle). Material imagery, not
+       * project case studies: no job names, places or dates.
+       */
+      range: [
+        {
+          id: 'pvc-lino',
+          name: { fr: 'PVC / Lino', en: 'PVC / Linoleum' },
+          body: {
+            fr: 'Linoléum et PVC en lés, joints soudés à chaud. Des sols résistants et faciles d’entretien, pour les bureaux et les commerces comme pour les logements.',
+            en: 'Linoleum and PVC in sheets, with hot-welded seams. Hard-wearing, easy-to-clean floors for offices and shops as well as homes.',
+          },
+          images: ['lino-salle', 'lino-ragreage'],
+        },
+        {
+          id: 'moquette',
+          name: { fr: 'Moquette', en: 'Carpet' },
+          body: {
+            fr: 'Moquette en lés ou en dalles. Les dalles se posent en damier, en bandes ou en calepinage libre, et se remplacent une à une.',
+            en: 'Carpet in rolls or tiles. Tiles can be laid as a checkerboard, in bands or in a free layout, and replaced one at a time.',
+          },
+          images: ['moquette-damier', 'moquette-couloir'],
+        },
+        {
+          id: 'vinyle',
+          name: { fr: 'Vinyle', en: 'Vinyl' },
+          body: {
+            fr: 'Lames et dalles de vinyle (LVT), aspect bois ou pierre. Une surface souple et silencieuse, collée sur un support parfaitement plan.',
+            en: 'Vinyl planks and tiles (LVT) in wood or stone finishes. A quiet, resilient surface, glued down on a perfectly flat subfloor.',
+          },
+          images: ['vinyle-surface', 'vinyle-dalles'],
+        },
+      ],
       title: {
         fr: 'Pose de lino, PVC, moquette, vinyle, etc.',
         en: 'Installation of linoleum, PVC, carpet, vinyl and more',
@@ -478,9 +595,11 @@ export const content = {
     eyebrow: { fr: 'Réalisations', en: 'Projects' },
     title: { fr: 'Chantiers réalisés.', en: 'Completed projects.' },
     intro: {
-      fr: 'Parquet, sols souples et moquette. Les photographies et les informations de chaque chantier sont à fournir par le client.',
-      en: 'Parquet, resilient floors and carpet. Photographs and details for each project are still to be provided by the client.',
+      fr: 'Des chantiers de parquet, et nos poses de PVC, de lino, de moquette et de vinyle en photographies.',
+      en: 'Parquet projects, and photographs of our PVC, linoleum, carpet and vinyl installations.',
     },
+    photoCountOne: { fr: '1 photographie', en: '1 photograph' },
+    photoCountMany: { fr: '{count} photographies', en: '{count} photographs' },
     filterLabel: { fr: 'Filtrer par type de sol', en: 'Filter by floor type' },
     filters: {
       all: { fr: 'Tous', en: 'All' },
@@ -488,19 +607,10 @@ export const content = {
       'pvc-lino': { fr: 'PVC / Lino', en: 'PVC / Lino' },
       moquette: { fr: 'Moquette', en: 'Carpet' },
       vinyle: { fr: 'Vinyle', en: 'Vinyl' },
-      other: { fr: 'Autre', en: 'Other' },
     },
-    countZero: { fr: '0 réalisation', en: '0 projects' },
     countOne: { fr: '1 réalisation', en: '1 project' },
     countMany: { fr: '{count} réalisations', en: '{count} projects' },
-    emptyTitle: { fr: 'Aucune réalisation dans cette catégorie', en: 'No projects in this category' },
-    emptyBody: {
-      fr: 'Les chantiers de ce type seront publiés dès que les photographies seront disponibles.',
-      en: 'Projects of this type will be published as soon as photographs are available.',
-    },
-    emptyAction: { fr: 'Afficher toutes les réalisations', en: 'Show all projects' },
   },
-
   projectDetail: {
     backToProjects: { fr: 'Toutes les réalisations', en: 'All projects' },
     galleryTitle: { fr: 'Galerie', en: 'Gallery' },
@@ -525,6 +635,10 @@ export const content = {
     coverPlaceholderFallback: {
       fr: 'PHOTO PLACEHOLDER — PHOTO DE COUVERTURE DU CHANTIER',
       en: 'PHOTO PLACEHOLDER — PROJECT COVER PHOTO',
+    },
+    metaDescription: {
+      fr: '{title} : photographies d’un chantier de sols réalisé par BI SERVICES Sàrl.',
+      en: '{title}: photographs of a flooring job carried out by BI SERVICES Sàrl.',
     },
   },
 
@@ -566,10 +680,6 @@ export const content = {
     hoursNote: {
       fr: 'En dehors des horaires, laissez un message : nous rappelons.',
       en: 'Outside these hours, leave a message and we will call you back.',
-    },
-    sidePlaceholder: {
-      fr: 'PHOTO PLACEHOLDER — OUTILS ET MATÉRIEL DE POSE',
-      en: 'PHOTO PLACEHOLDER — TOOLS AND INSTALLATION EQUIPMENT',
     },
   },
 

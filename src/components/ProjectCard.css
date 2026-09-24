@@ -21,19 +21,18 @@
 
 .project-card__body {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: var(--space-md);
+  row-gap: 0.2rem;
   padding-top: var(--space-md);
 }
 
 .project-card__title {
-  font-size: var(--fs-h4);
+  font-size: var(--fs-h3);
   line-height: 1.15;
   transition: color var(--dur-fast) var(--ease-out);
-}
-
-.project-card--lg .project-card__title {
-  font-size: var(--fs-h3);
 }
 
 .project-card__link:hover .project-card__title {
@@ -50,17 +49,12 @@
   color: var(--c-text-muted);
 }
 
-.project-card__service {
-  font-size: var(--fs-sm);
-  color: var(--c-text-muted);
-  max-width: 34ch;
-}
-
 /* A thin rule under the caption keeps the grid architectural without boxing
    each project into a card. */
 .project-card__body::after {
   content: '';
   display: block;
+  flex-basis: 100%;
   height: 1px;
   margin-top: var(--space-md);
   background: var(--c-rule);

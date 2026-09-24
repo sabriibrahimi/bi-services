@@ -1,24 +1,27 @@
 /**
  * What the image pipeline works from. Edit this file, then run `npm run images`.
  *
- * Two completely separate sets, and they must not be mixed:
+ * Three separate sets, and they must not be mixed:
  *
- *  PROJECT_PHOTOS — the client's own photographs of real job sites. They are
- *  used only on the projects pages and on the featured-project cards. Each entry
- *  names a file in photos-source/, the project it belongs to, and any cleanup it
- *  needs. Photographs from different job sites must never share a project.
+ *  PROJECT_PHOTOS — the client's own photographs of real job sites, at the top
+ *  level of photos-source/. Used only on the projects pages and the featured
+ *  project cards. Photographs from different job sites never share a project.
  *
- *  SITE_IMAGES — licensed photographs used for the page furniture (hero,
- *  introduction, services, contact, 404). They are never presented as the
- *  company's work: no project captions, no locations. Each entry records its
- *  source and photographer, which CREDITS.md is generated from.
+ *  MATERIAL_PHOTOS — the client's own photographs, sorted by covering in
+ *  photos-source/PVC-Lino, Moquette and Vinyle. Shown as plain photographs:
+ *  a few on the services page, all of them under their filter on the projects
+ *  page. Never grouped into projects, and never given titles, places or
+ *  descriptions — only parquet jobs are presented as projects.
+ *
+ *  SITE_IMAGES — licensed photographs (hero, introduction, parquet service,
+ *  404). Never presented as the company's work. Each entry records its source
+ *  and photographer, which CREDITS.md is generated from.
  */
 
 /** Files in photos-source/, grouped by job site. One group = one project. */
 export const PROJECT_PHOTOS = [
   {
     project: 1,
-    category: 'parquet',
     photos: [
       {
         name: 'projet-1-couverture',
@@ -41,7 +44,6 @@ export const PROJECT_PHOTOS = [
   },
   {
     project: 2,
-    category: 'parquet',
     photos: [
       {
         name: 'projet-2-couverture',
@@ -61,7 +63,6 @@ export const PROJECT_PHOTOS = [
   },
   {
     project: 3,
-    category: 'parquet',
     photos: [
       {
         name: 'projet-3-couverture',
@@ -79,7 +80,6 @@ export const PROJECT_PHOTOS = [
   },
   {
     project: 4,
-    category: 'other',
     // The other staircase on file (the one with white risers) is only 954 px
     // wide — fine for a thumbnail, not for a cover — so this job site is used
     // instead. See the note at the end of PLACEHOLDERS.md.
@@ -91,7 +91,6 @@ export const PROJECT_PHOTOS = [
   },
   {
     project: 5,
-    category: 'other',
     photos: [
       { name: 'projet-5-couverture', file: 'WhatsApp Image 2026-09-19 at 19.15.35 (10).jpeg', cover: true },
       { name: 'projet-5-parasol', file: 'WhatsApp Image 2026-09-19 at 19.15.35 (11).jpeg' },
@@ -99,6 +98,62 @@ export const PROJECT_PHOTOS = [
       // encoder, or the file ends up heavier than the hero.
       { name: 'projet-5-structure', file: 'WhatsApp Image 2026-09-19 at 19.15.35 (1).jpeg', quality: 55 },
       { name: 'projet-5-chantier', file: 'WhatsApp Image 2026-09-19 at 19.15.35 (9).jpeg' },
+    ],
+  },
+]
+
+/**
+ * Files in photos-source/<folder>/, grouped by covering. Each photograph is a
+ * picture of the material, not of a named job. `crop` values are fractions of
+ * the frame; most remove the phone's "Galaxy S24" watermark at the bottom-left
+ * and the clutter of a live site (cables on walls, tool cases, markers).
+ */
+export const MATERIAL_PHOTOS = [
+  {
+    material: 'pvc-lino',
+    folder: 'PVC-Lino',
+    photos: [
+      // One office: the same two arched windows in every frame.
+      { name: 'lino-salle', file: 'WhatsApp Image 2026-09-23 at 20.32.50 (1).jpeg', crop: { bottom: 0.1, left: 0.17, right: 0.05 } },
+      { name: 'lino-fenetres', file: 'WhatsApp Image 2026-09-23 at 20.32.50 (3).jpeg', crop: { bottom: 0.1, left: 0.14 } },
+      { name: 'lino-vue', file: 'WhatsApp Image 2026-09-23 at 20.32.50.jpeg', crop: { bottom: 0.1 } },
+      // The roll being laid over the levelled subfloor.
+      { name: 'lino-pose', file: 'WhatsApp Image 2026-09-23 at 20.32.50 (4).jpeg', crop: { bottom: 0.1 } },
+      // Self-levelling compound poured before the covering goes down.
+      { name: 'lino-ragreage', file: 'WhatsApp Image 2026-09-23 at 20.32.50 (2).jpeg', crop: { bottom: 0.14, top: 0.1, right: 0.14 } },
+    ],
+  },
+  {
+    material: 'moquette',
+    folder: 'Moquette',
+    photos: [
+      { name: 'moquette-damier', file: '6.jpeg', crop: { bottom: 0.1 } },
+      { name: 'moquette-couloir', file: 'WhatsApp Image 2026-09-23 at 20.59.03.jpeg', crop: { bottom: 0.18 } },
+      { name: 'moquette-bureau', file: '2.jpeg', crop: { top: 0.06, bottom: 0.1 } },
+      { name: 'moquette-bureau-porte', file: '3.jpeg', crop: { bottom: 0.1 } },
+      { name: 'moquette-tapis', file: '5.jpeg' },
+      { name: 'moquette-estrade', file: '4.jpeg', crop: { right: 0.2, bottom: 0.06 } },
+      { name: 'moquette-cloisons', file: '8.jpeg', crop: { bottom: 0.1, left: 0.16 } },
+      { name: 'moquette-marche', file: '9.jpeg', crop: { bottom: 0.1 } },
+      { name: 'moquette-plateau', file: '7.jpeg' },
+      { name: 'moquette-escalier', file: '10.jpeg', crop: { bottom: 0.08 } },
+      { name: 'moquette-bureau-meuble', file: '1.jpeg', crop: { bottom: 0.1 } },
+    ],
+  },
+  {
+    material: 'vinyle',
+    folder: 'Vinyle',
+    photos: [
+      // Stone-look vinyl tiles across a shop floor, seen down its length. The
+      // ceiling and walls of the live fit-out (cables, paperwork) are cropped
+      // away; the floor conduits for the shop fittings stay small and distant.
+      { name: 'vinyle-surface', file: '5.jpeg', crop: { top: 0.36, bottom: 0.1 } },
+      // The clean lower band of another view: the tiles close up.
+      { name: 'vinyle-dalles', file: '4.jpeg', crop: { top: 0.58, bottom: 0.1 } },
+      { name: 'vinyle-local', file: '3.jpeg', crop: { top: 0.3, bottom: 0.14 } },
+      // Crops the person standing at the left edge out of the frame.
+      { name: 'vinyle-vitrine', file: '2.jpeg', crop: { left: 0.2, bottom: 0.14 } },
+      { name: 'vinyle-pose', file: '1.jpeg', crop: { bottom: 0.14 } },
     ],
   },
 ]
@@ -117,10 +172,10 @@ export const SITE_IMAGES = [
   },
   {
     name: 'intro-principale',
-    id: 'YyROGiu9LuE',
-    photographer: 'Kristaps Solims',
-    page: 'https://unsplash.com/photos/YyROGiu9LuE',
-    description: 'Sunlight drawing diamonds across a wooden floor',
+    id: 'ITA4ysSN8xA',
+    photographer: 'Lisa Anna',
+    page: 'https://unsplash.com/photos/an-empty-room-with-hard-wood-floors-and-white-walls-ITA4ysSN8xA',
+    description: 'Bright empty room with light oak flooring and tall windows',
   },
   {
     name: 'intro-detail',
@@ -131,38 +186,19 @@ export const SITE_IMAGES = [
   },
   {
     name: 'parquet-principale',
-    id: '_e2Jw79ssKo',
-    photographer: 'Madalozzo',
-    page: 'https://unsplash.com/photos/_e2Jw79ssKo',
-    description: 'Herringbone parquet with a satin finish',
+    id: 'P10Yd3OMijE',
+    photographer: 'Salvo Media LLC',
+    page: 'https://unsplash.com/photos/bright-empty-room-with-hardwood-floors-and-large-windows-P10Yd3OMijE',
+    description: 'Bright contemporary room with light oak flooring',
   },
   {
     name: 'parquet-detail',
-    id: 'K6vkTjYciX8',
-    photographer: 'Alex Cooper',
-    page: 'https://unsplash.com/photos/close-up-of-a-wooden-parquet-floor-pattern-K6vkTjYciX8',
-    description: 'Close-up of a parquet pattern',
-  },
-  {
-    name: 'souples-principale',
-    id: 'kdnfVGGPh_U',
-    photographer: 'B vB',
-    page: 'https://unsplash.com/photos/close-up-of-woven-rug-kdnfVGGPh_U',
-    description: 'Close view of a woven floor covering',
-  },
-  {
-    name: 'souples-detail',
-    id: 'UZZcLyvqXJs',
-    photographer: 'Lynda Sanchez',
-    page: 'https://unsplash.com/photos/brown-area-rug-UZZcLyvqXJs',
-    description: 'Textile floor covering in a warm tone',
-  },
-  {
-    name: 'contact',
-    id: '8o6Z2j1XX6U',
-    photographer: 'Kai Damm-Jonas',
-    page: 'https://unsplash.com/photos/8o6Z2j1XX6U',
-    description: 'Interior with brick wall and wooden floor',
+    id: 'DJ3dx5MoUIw',
+    photographer: 'Alina Bondar',
+    page: 'https://unsplash.com/photos/wicker-chair-with-metal-legs-on-a-wooden-floor-DJ3dx5MoUIw',
+    description: 'Pale herringbone parquet with a single chair',
+    // The original is mostly bare wall: keep the chair and the floor.
+    crop: { top: 0.44 },
   },
   {
     name: 'introuvable',

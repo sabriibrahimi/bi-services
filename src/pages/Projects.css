@@ -34,7 +34,6 @@
   text-transform: uppercase;
   color: var(--c-text-muted);
   transition: color var(--dur-fast) var(--ease-out);
-  /* Reserve the weight change so the row never reflows when a filter is picked. */
   min-width: max-content;
 }
 
@@ -76,33 +75,6 @@
   color: var(--c-text-muted);
 }
 
-/* --- Grid ----------------------------------------------------------------- */
-
-.project-grid {
-  display: grid;
-  gap: var(--space-2xl);
-}
-
-.projects__empty {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-md);
-  padding: clamp(2.5rem, 8vw, 5rem) 0;
-  border-top: 1px solid var(--c-rule);
-  border-bottom: 1px solid var(--c-rule);
-}
-
-.projects__empty-title {
-  font-size: var(--fs-h3);
-  max-width: 20ch;
-}
-
-.projects__empty-body {
-  color: var(--c-text-muted);
-  max-width: 44ch;
-}
-
 /* The extra height goes above the label so the active underline stays tight
    against the text. */
 @media (pointer: coarse) {
@@ -111,45 +83,50 @@
   }
 }
 
-@media (min-width: 52rem) {
-  /* Back in columns: the crops go back to the composed desktop ratios. */
-  .project-grid .media {
-    aspect-ratio: var(--media-ratio, 4 / 3);
-  }
+/* --- Groups (the parquet projects, then one gallery per covering) --------- */
 
+.projects__results {
+  display: grid;
+  gap: var(--space-3xl);
+  animation: page-in var(--dur-mid) var(--ease-out) backwards;
+}
+
+.projects__heading {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--c-rule);
+}
+
+/* --- Grid ----------------------------------------------------------------- */
+
+.project-grid {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+/* Two columns from a small tablet up: one full-width card per row would make
+   each photograph taller than half a tablet screen. */
+@media (min-width: 40rem) {
   .project-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: clamp(1.5rem, 3vw, 3rem);
-    row-gap: clamp(2.5rem, 6vw, 5rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(1rem, 4vw, 4.5rem);
+    row-gap: clamp(2rem, 5vw, 4.5rem);
     align-items: start;
   }
+}
 
-  /* A repeating six-item rhythm: wide, narrow-and-dropped, indented, and so on.
-     Any number of projects keeps the same varied cadence. */
-  .project-grid__item:nth-child(6n + 1) {
-    grid-column: 1 / span 7;
+@media (min-width: 52rem) {
+  .project-grid {
+    --stagger: clamp(2.5rem, 7vw, 6rem);
+    padding-bottom: var(--stagger);
   }
 
-  .project-grid__item:nth-child(6n + 2) {
-    grid-column: 9 / span 4;
-    padding-top: clamp(2rem, 6vw, 5rem);
-  }
-
-  .project-grid__item:nth-child(6n + 3) {
-    grid-column: 2 / span 5;
-  }
-
-  .project-grid__item:nth-child(6n + 4) {
-    grid-column: 8 / span 5;
-    padding-top: clamp(1.5rem, 4vw, 3rem);
-  }
-
-  .project-grid__item:nth-child(6n + 5) {
-    grid-column: 1 / span 6;
-  }
-
-  .project-grid__item:nth-child(6n + 6) {
-    grid-column: 8 / span 4;
-    padding-top: clamp(2rem, 5vw, 4rem);
+  /* The right-hand column drops by a step: the same card, set out with a
+     rhythm instead of a spreadsheet. A relative offset moves the column
+     without widening the gaps inside it. */
+  .project-grid__item:nth-child(even) {
+    position: relative;
+    top: var(--stagger);
   }
 }

@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { path } from '../config/routes.js'
 import { content } from '../data/content.js'
 import { findProjectBySlug, getProjectNeighbours } from '../data/projects.js'
-import { t, useLanguage } from '../utils/i18n.js'
+import { t, tf, useLanguage } from '../utils/i18n.js'
 import { toneForIndex } from '../utils/tones.js'
 import Action from '../components/Action.jsx'
 import BeforeAfter from '../components/BeforeAfter.jsx'
@@ -14,6 +14,17 @@ import Reveal from '../components/Reveal.jsx'
 import Seo from '../components/Seo.jsx'
 import NotFound from './NotFound.jsx'
 import './ProjectDetail.css'
+
+/**
+ * The crop for a photograph, from its own proportions: kept as shot within
+ * `min`..`max`, so a panorama stays a panorama and a portrait stays a portrait,
+ * and only the extreme shapes are trimmed.
+ */
+function naturalRatio(image, min, max) {
+  if (!image?.width || !image?.height) return '4 / 3'
+  const value = Math.min(max, Math.max(min, image.width / image.height))
+  return `${Math.round(value * 1000)} / 1000`
+}
 
 export default function ProjectDetail() {
   const lang = useLanguage()
@@ -31,11 +42,7 @@ export default function ProjectDetail() {
   const title = t(project.title, lang)
   const metaPrefix = t(content.meta.projectPrefix, lang)
 
-  // Location and service keep every project's description distinct, even while
-  // the project texts themselves are placeholders.
-  const metaDescription = `${title}, ${t(project.location, lang)}. ${
-    project.services[lang]?.join(', ') ?? ''
-  }. ${t(project.description, lang)}`.slice(0, 300)
+  const metaDescription = tf(content.projectDetail.metaDescription, lang, { title })
 
   return (
     <>
@@ -57,23 +64,26 @@ export default function ProjectDetail() {
             </Link>
 
             <h1 className="project__title">{title}</h1>
-
-            <p className="project__meta">
-              <span>{t(project.location, lang)}</span>
-              <span aria-hidden="true">·</span>
-              <span>{project.year}</span>
-            </p>
           </div>
 
-          <Media
-            className="project__cover"
-            {...(project.cover ?? {})}
-            label={project.coverPlaceholder ?? content.projectDetail.coverPlaceholderFallback}
-            tone="charcoal"
-            ratio="16 / 9"
-            priority
-            sizes="100vw"
-          />
+          {/* Full bleed on a phone; on a large screen the cover sits in the
+              page column at its own proportions, capped in height, so a phone
+              photograph is never blown up across a wide monitor. */}
+          <div
+            className="project__cover-frame"
+            style={{ '--cover-ar': project.cover ? project.cover.width / project.cover.height : 16 / 9 }}
+          >
+            <Media
+              className="project__cover"
+              {...(project.cover ?? {})}
+              label={project.coverPlaceholder ?? content.projectDetail.coverPlaceholderFallback}
+              tone="charcoal"
+              ratio={naturalRatio(project.cover, 0.75, 2.2)}
+              ratioSm={naturalRatio(project.cover, 1.25, 1.6)}
+              priority
+              sizes="(min-width: 62rem) min(92vw, 84rem), 100vw"
+            />
+          </div>
         </header>
 
         {/* ------------------------------------------------------ Gallery -- */}
@@ -82,7 +92,7 @@ export default function ProjectDetail() {
             <h2 className="project__subtitle">{t(content.projectDetail.galleryTitle, lang)}</h2>
 
             {gallery.length > 0 ? (
-              <ul className="project__gallery">
+              <ul className={`project__gallery project__gallery--${Math.min(gallery.length, 3)}`}>
                 {gallery.map((image, index) => (
                   <li className="project__gallery-item" key={image.src}>
                     <button
@@ -96,10 +106,10 @@ export default function ProjectDetail() {
                       <Media
                         {...image}
                         label={image.alt}
-                        ratio={index % 3 === 0 ? '4 / 3' : '3 / 4'}
-                        ratioSm={index % 3 === 0 ? '3 / 2' : '4 / 3'}
+                        ratio={naturalRatio(image, 0.7, 2.2)}
+                        ratioSm={naturalRatio(image, 1, 2)}
                         tone={toneForIndex(index)}
-                        sizes="(min-width: 62rem) 45vw, 100vw"
+                        sizes="(min-width: 52rem) 46vw, 100vw"
                       />
                     </button>
                   </li>

@@ -18,6 +18,10 @@ export const siteImages = {
       {
         "src": "/images/site/hero-2000.webp",
         "width": 2000
+      },
+      {
+        "src": "/images/site/hero-2400.webp",
+        "width": 2400
       }
     ],
     "width": 1400,
@@ -39,8 +43,8 @@ export const siteImages = {
       }
     ],
     "width": 1400,
-    "height": 2100,
-    "ratio": "2400 / 3600",
+    "height": 933,
+    "ratio": "2400 / 1600",
     "maxWidth": 2400,
     "smallOnly": false
   },
@@ -75,8 +79,8 @@ export const siteImages = {
       }
     ],
     "width": 1400,
-    "height": 939,
-    "ratio": "2400 / 1609",
+    "height": 933,
+    "ratio": "2400 / 1600",
     "maxWidth": 2400,
     "smallOnly": false
   },
@@ -93,62 +97,8 @@ export const siteImages = {
       }
     ],
     "width": 1400,
-    "height": 933,
-    "ratio": "2400 / 1600",
-    "maxWidth": 2400,
-    "smallOnly": false
-  },
-  "souples-principale": {
-    "src": "/images/site/souples-principale-1400.jpg",
-    "sources": [
-      {
-        "src": "/images/site/souples-principale-800.webp",
-        "width": 800
-      },
-      {
-        "src": "/images/site/souples-principale-1400.webp",
-        "width": 1400
-      }
-    ],
-    "width": 1400,
-    "height": 1050,
-    "ratio": "2400 / 1800",
-    "maxWidth": 2400,
-    "smallOnly": false
-  },
-  "souples-detail": {
-    "src": "/images/site/souples-detail-1400.jpg",
-    "sources": [
-      {
-        "src": "/images/site/souples-detail-800.webp",
-        "width": 800
-      },
-      {
-        "src": "/images/site/souples-detail-1400.webp",
-        "width": 1400
-      }
-    ],
-    "width": 1400,
-    "height": 933,
-    "ratio": "2400 / 1600",
-    "maxWidth": 2400,
-    "smallOnly": false
-  },
-  "contact": {
-    "src": "/images/site/contact-1400.jpg",
-    "sources": [
-      {
-        "src": "/images/site/contact-800.webp",
-        "width": 800
-      },
-      {
-        "src": "/images/site/contact-1400.webp",
-        "width": 1400
-      }
-    ],
-    "width": 1400,
-    "height": 1051,
-    "ratio": "2400 / 1802",
+    "height": 1176,
+    "ratio": "2400 / 2016",
     "maxWidth": 2400,
     "smallOnly": false
   },

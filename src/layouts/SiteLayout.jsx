@@ -13,18 +13,25 @@ import './SiteLayout.css'
  * is fixed for everything it renders.
  */
 export default function SiteLayout({ lang }) {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const firstRender = useRef(true)
 
-  // Move to the top of the new page on navigation, but never on first paint
-  // (which would fight the browser restoring a scroll position).
+  // Move to the top of the new page on navigation — or to the #section a link
+  // points at — but never on first paint (which would fight the browser
+  // restoring a scroll position).
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false
       return
     }
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [pathname])
+    const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null
+    if (target) {
+      const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) * 16 || 0
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset - 24, behavior: 'auto' })
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
+  }, [pathname, hash])
 
   return (
     <LanguageProvider value={lang}>

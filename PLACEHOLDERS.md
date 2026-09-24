@@ -11,24 +11,20 @@ visibly instead of filling the gap.
 | DOMAIN TO BE PROVIDED | `domain` | Canonical URLs, hreflang, Open Graph tags, `sitemap.xml` and `robots.txt` all derive from it. The build prints a warning while it is still the placeholder. |
 | FORM SERVICE TO BE PROVIDED | `form.provider` + `form.formspreeEndpoint` (or `'netlify'`) | Until one is set, the contact form validates and then asks the visitor to call or write — it never pretends a message was sent. |
 
-## 2. Project details — `src/data/projects.js`
+## 2. Projects — `src/data/projects.js`
 
-The five projects now carry real photographs, but everything that cannot be read
-off a photograph is still a placeholder:
+Only parquet jobs are projects. Each one shows its number ("Projet 1" …
+"Projet 5" / "Project 1" … "Project 5") and its photographs — nothing else. No
+location, year, surface or description appears anywhere on the site, so there
+is no placeholder text to see; when the client supplies real details, they can
+be added to the project and shown on its card and page.
 
-- **Titles** — "Projet 1" … "Projet 5" / "Project 1" … "Project 5", with the
-  slugs `projet-1` / `project-1`. Replace both when you have real names.
-- **Location, year, surface area, materials** — `À fournir` / `To be provided`,
-  all coming from the shared `toBeProvided` block at the top of the file.
-- **Description** — `PROJECT INFORMATION TO BE PROVIDED …`. It is used for the
-  page's meta description; the project page itself prints no description block.
 - **Before / after** — `beforeImage` and `afterImage` are null, so no comparison
-  slider is shown. It appears only when both photographs exist, and is never
-  faked.
+  slider is shown. It appears only when both photographs exist.
 
-The `services` line of each project *was* set from what the photographs plainly
-show (Versailles panels, herringbone, staircase cladding, decking); correct it
-if any is wrong.
+PVC / Lino, Moquette and Vinyle are shown as plain photo galleries under their
+filters on the projects page (from `photos-source/PVC-Lino`, `Moquette`,
+`Vinyle`) and are never grouped into projects.
 
 ## 3. Legal text — `src/data/content.js`
 
@@ -48,10 +44,9 @@ Nothing here is broken; these are gaps worth filling.
 
 | Gap | Why | Where it goes |
 | --- | --- | --- |
-| A job with **lino, PVC, carpet or vinyl** | Not one of the 35 photographs shows a soft-flooring job, although it is half of what the company offers. The second service is illustrated with a licensed image of a woven floor covering instead. | `photos-source/` → a sixth project, or as the illustration for service 02 |
+| Cleaner **vinyl** photographs | All five were taken mid fit-out: cables on the walls and conduits in the floor. The best crops are used, but a finished, furnished shop would show the material far better. | `photos-source/Vinyle/` |
 | More photographs of **projects 2 and 3** | Both have only two: a cover and one gallery image. | The matching group in `scripts/image-sources.mjs` |
 | **Before** photographs | The before/after slider is built and waiting; it needs a pair from the same job. | `beforeImage` / `afterImage` in `src/data/projects.js` |
-| Photographs **wider than 1000 px** of the white-riser staircase | The three photographs of that job are 954 px wide — fine as thumbnails, not enough for a cover — so a different staircase was used for project 4. | `photos-source/` |
 
 ## 5. Supplied — for reference
 
@@ -62,7 +57,8 @@ Nothing here is broken; these are gaps worth filling.
 | Business descriptor | `content.brand.descriptor` and the footer tagline |
 | Address | `site.address` — Chemin François-Chavaz 24, 1213 Onex. Footer, contact page and LocalBusiness structured data. |
 | Map | `site.map` — Google Maps, loaded only after the visitor clicks. |
-| Project photographs | `photos-source/` → `public/images/projects/` via `npm run images`; grouping in `scripts/image-sources.mjs`, alt text in `src/data/projects.js`. |
+| Parquet project photographs | `photos-source/` → `public/images/projects/` via `npm run images`; grouping in `scripts/image-sources.mjs`, alt text in `src/data/projects.js`. |
+| PVC / Lino, Moquette, Vinyle photographs | `photos-source/<folder>/` → `public/images/materials/`; list in `MATERIAL_PHOTOS`, alt text in `content.materialAlt`. |
 | Page images | `site-source/` → `public/images/site/`; every one credited in `CREDITS.md`, alt text in `content.siteImageAlt`. |
 | Favicon and link preview | `public/favicon.svg`, `favicon-96.png`, `apple-touch-icon.png`, `og-image.jpg` — generated from the mark and the hero image. |
 

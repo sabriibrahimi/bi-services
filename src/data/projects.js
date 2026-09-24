@@ -15,11 +15,10 @@ import { asset } from '../config/deployment.js'
  * grouping). `image()` returns everything <Media> needs, or null while a
  * photograph is missing — in which case a labelled placeholder is shown.
  *
- * Location, year, surface and materials are deliberately still placeholders:
- * they cannot be read off a photograph.
+ * A project carries its number and its photographs, nothing else: no location,
+ * year, surface or description is shown until the client supplies real ones,
+ * and none is invented in the meantime.
  */
-
-export const categories = ['parquet', 'pvc-lino', 'moquette', 'vinyle', 'other']
 
 /** Resolve a generated photograph plus its bilingual alternative text. */
 function image(name, alt) {
@@ -36,26 +35,18 @@ function image(name, alt) {
   }
 }
 
-const toBeProvided = {
-  location: { fr: 'Lieu à fournir', en: 'Location to be provided' },
-  year: 'À fournir',
-  surface: { fr: 'À fournir', en: 'To be provided' },
-  materials: { fr: ['À fournir'], en: ['To be provided'] },
-}
+/**
+ * Filters on the projects page. Only parquet jobs are projects; the other three
+ * filters show that covering's photographs as a plain gallery (see
+ * src/pages/Projects.jsx). "Autre" was removed on request: the staircase and
+ * decking jobs (projects 4 and 5) are wood work and sit under Parquet.
+ */
+export const categories = ['parquet', 'pvc-lino', 'moquette', 'vinyle']
 
 export const projects = [
   {
     slug: { fr: 'projet-1', en: 'project-1' },
     title: { fr: 'Projet 1', en: 'Project 1' },
-    ...toBeProvided,
-    services: {
-      fr: ['Pose de panneaux Versailles', 'Bordure et filet'],
-      en: ['Versailles panel installation', 'Border and inlay'],
-    },
-    description: {
-      fr: 'PROJECT INFORMATION TO BE PROVIDED — description du chantier, état du support existant, travaux réalisés et difficulté résolue.',
-      en: 'PROJECT INFORMATION TO BE PROVIDED — site description, existing subfloor condition, work carried out and the challenge solved.',
-    },
     cover: image('projet-1-couverture', {
       fr: 'Panneaux Versailles en chêne posés dans une pièce, avec filet de bordure foncé',
       en: 'Oak Versailles panels laid in a room, with a dark border inlay',
@@ -82,15 +73,6 @@ export const projects = [
   {
     slug: { fr: 'projet-2', en: 'project-2' },
     title: { fr: 'Projet 2', en: 'Project 2' },
-    ...toBeProvided,
-    services: {
-      fr: ['Rénovation de parquet', 'Ponçage et finition'],
-      en: ['Parquet renovation', 'Sanding and finishing'],
-    },
-    description: {
-      fr: 'PROJECT INFORMATION TO BE PROVIDED — description du chantier, état du support existant, travaux réalisés et difficulté résolue.',
-      en: 'PROJECT INFORMATION TO BE PROVIDED — site description, existing subfloor condition, work carried out and the challenge solved.',
-    },
     cover: image('projet-2-couverture', {
       fr: 'Grand séjour avec parquet en panneaux et cheminée en marbre',
       en: 'Large living room with panel parquet and a marble fireplace',
@@ -113,15 +95,6 @@ export const projects = [
   {
     slug: { fr: 'projet-3', en: 'project-3' },
     title: { fr: 'Projet 3', en: 'Project 3' },
-    ...toBeProvided,
-    services: {
-      fr: ['Pose de parquet à bâtons rompus'],
-      en: ['Herringbone parquet installation'],
-    },
-    description: {
-      fr: 'PROJECT INFORMATION TO BE PROVIDED — description du chantier, état du support existant, travaux réalisés et difficulté résolue.',
-      en: 'PROJECT INFORMATION TO BE PROVIDED — site description, existing subfloor condition, work carried out and the challenge solved.',
-    },
     cover: image('projet-3-couverture', {
       fr: 'Parquet chêne à bâtons rompus terminé dans une pièce vide',
       en: 'Finished oak herringbone parquet in an empty room',
@@ -144,15 +117,6 @@ export const projects = [
   {
     slug: { fr: 'projet-4', en: 'project-4' },
     title: { fr: 'Projet 4', en: 'Project 4' },
-    ...toBeProvided,
-    services: {
-      fr: ['Habillage d’escalier en bois'],
-      en: ['Timber staircase cladding'],
-    },
-    description: {
-      fr: 'PROJECT INFORMATION TO BE PROVIDED — description du chantier, état du support existant, travaux réalisés et difficulté résolue.',
-      en: 'PROJECT INFORMATION TO BE PROVIDED — site description, existing subfloor condition, work carried out and the challenge solved.',
-    },
     cover: image('projet-4-couverture', {
       fr: 'Escalier habillé en bois teinté foncé, marches et contremarches',
       en: 'Staircase clad in dark-stained timber, treads and risers',
@@ -173,21 +137,12 @@ export const projects = [
     ].filter(Boolean),
     beforeImage: null,
     afterImage: null,
-    category: 'other',
+    category: 'parquet',
     featured: true,
   },
   {
     slug: { fr: 'projet-5', en: 'project-5' },
     title: { fr: 'Projet 5', en: 'Project 5' },
-    ...toBeProvided,
-    services: {
-      fr: ['Terrasse en bois', 'Structure sur plots'],
-      en: ['Timber deck', 'Pedestal-mounted substructure'],
-    },
-    description: {
-      fr: 'PROJECT INFORMATION TO BE PROVIDED — description du chantier, état du support existant, travaux réalisés et difficulté résolue.',
-      en: 'PROJECT INFORMATION TO BE PROVIDED — site description, existing subfloor condition, work carried out and the challenge solved.',
-    },
     cover: image('projet-5-couverture', {
       fr: 'Terrasse en bois exotique terminée autour d’une piscine',
       en: 'Finished hardwood deck around a swimming pool',
@@ -212,7 +167,7 @@ export const projects = [
     ].filter(Boolean),
     beforeImage: null,
     afterImage: null,
-    category: 'other',
+    category: 'parquet',
     featured: true,
   },
 ]

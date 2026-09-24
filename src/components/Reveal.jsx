@@ -38,11 +38,15 @@ export default function Reveal({ as: Tag = 'div', delay = 0, className = '', chi
 
     observer.observe(node)
 
-    // Failsafe: whatever happens to the observer, the content is never left
-    // invisible. Content first, motion second.
+    // Failsafe: whatever happens to the observer, content that is on screen (or
+    // already scrolled past) is never left invisible. Content further down keeps
+    // waiting for the scroll, so its entrance is still seen. Content first,
+    // motion second.
     const failsafe = window.setTimeout(() => {
-      setShown(true)
-      observer.disconnect()
+      if (node.getBoundingClientRect().top < window.innerHeight) {
+        setShown(true)
+        observer.disconnect()
+      }
     }, 2500)
 
     return () => {

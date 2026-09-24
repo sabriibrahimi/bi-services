@@ -9,7 +9,7 @@ at build time so search engines and link previews see real content.
 ```bash
 npm install
 npm run dev      # development server on http://localhost:5173
-npm run images   # photos-source/ -> public/photos/ + src/data/photos.js
+npm run images   # photos-source/ + site-source/ -> public/images/ + src/data/*Photos.js
 npm run build    # prerenders every route into dist/, then writes robots.txt + sitemap.xml
 npm run preview  # serves the built site
 ```
@@ -86,12 +86,17 @@ photograph.
 
 ### Photographs
 
-Two sets, kept strictly apart.
+Three sets, kept strictly apart.
 
-**The client's own photographs** live in `photos-source/` and are used *only* by
-the projects: the projects page, the project pages, and the featured cards on
-the home page, which show each project's own cover. Never on the hero, the
-services or anywhere else.
+**Parquet projects** — the client's photographs at the top of `photos-source/`.
+Grouped one job site per project (`PROJECT_PHOTOS`), and used only by the
+projects: the projects page, the project pages and the featured cards on the
+home page.
+
+**Coverings** — the client's photographs in `photos-source/PVC-Lino`,
+`Moquette` and `Vinyle` (`MATERIAL_PHOTOS`). Plain photographs, never grouped
+into projects: a few illustrate the soft-floor service on the services page,
+and all of them appear as a gallery under their filter on the projects page.
 
 **Licensed images** illustrate the rest of the pages. They are downloaded once
 into `site-source/`, and `CREDITS.md` lists every one with its photographer and
@@ -105,10 +110,11 @@ npm run images
 
 It reads `scripts/image-sources.mjs` — which photographs are used, which job
 site each belongs to, and any cleanup they need — then writes
-`public/images/projects/` and `public/images/site/` as WebP at 800 / 1400 /
-2000 px plus a JPEG fallback, and regenerates `src/data/projectPhotos.js`,
-`src/data/siteImages.js`, `CREDITS.md`, the link-preview image and the PNG
-icons.
+`public/images/projects/`, `public/images/materials/` and
+`public/images/site/` as WebP at 800 / 1400 / 2000 px (2400 for the hero) plus
+a JPEG fallback, and regenerates `src/data/projectPhotos.js`,
+`src/data/materialPhotos.js`, `src/data/siteImages.js`, `CREDITS.md`, the
+link-preview image and the PNG icons.
 
 Every photograph gets the same gentle cleanup before resizing: white balance
 pulled towards neutral, exposure nudged towards a mid tone, a light unsharp

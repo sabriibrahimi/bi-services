@@ -5,9 +5,13 @@
   min-height: 100svh;
 }
 
+/* A short fade and rise when a page opens. Fill mode is `backwards`, not
+   `both`: once the animation ends nothing of it may remain on <main>, because
+   a lingering transform would turn <main> into the containing block of every
+   position: fixed element inside it (the project lightbox is one). */
 .site-main {
   flex: 1 0 auto;
-  animation: page-in var(--dur-mid) var(--ease-out) both;
+  animation: page-in var(--dur-mid) var(--ease-out) backwards;
 }
 
 .site-main:focus {
@@ -17,6 +21,7 @@
 @keyframes page-in {
   from {
     opacity: 0;
+    transform: translate3d(0, 0.5rem, 0);
   }
 }
 

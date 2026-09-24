@@ -1,10 +1,8 @@
 import { formatAddress, hasAddress, site } from '../config/site.js'
 import { content } from '../data/content.js'
 import { t, useLanguage } from '../utils/i18n.js'
-import { siteImage } from '../utils/siteImage.js'
 import ContactForm from '../components/ContactForm.jsx'
 import MapEmbed from '../components/MapEmbed.jsx'
-import Media from '../components/Media.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Seo from '../components/Seo.jsx'
@@ -74,13 +72,6 @@ export default function Contact() {
               </div>
             </dl>
 
-            <Media
-              className="contact__media"
-              {...siteImage('contact', content.contact.sidePlaceholder)}
-              tone="walnut"
-              ratio="4 / 3"
-              sizes="(min-width: 62rem) 32vw, 100vw"
-            />
           </Reveal>
 
           {/* -------------------------------------------------------- Form -- */}

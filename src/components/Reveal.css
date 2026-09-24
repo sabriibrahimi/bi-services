@@ -14,10 +14,32 @@
   transform: none;
 }
 
+/* Photographs inside a revealed block unveil from their lower edge, a little
+   slower than the block itself fades in: a quiet sense of the image settling
+   into place. Only the frame is clipped — the photograph is never scaled here,
+   so hover effects on the image itself are untouched. */
+.reveal .media {
+  transition: clip-path calc(var(--dur-slow) * 1.35) var(--ease-editorial);
+  transition-delay: inherit;
+}
+
+.reveal.is-hidden .media {
+  clip-path: inset(0 0 14% 0);
+}
+
+.reveal.is-shown .media,
+.reveal.is-static .media {
+  clip-path: inset(0 0 0 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal.is-hidden {
     opacity: 1;
     transform: none;
+  }
+
+  .reveal.is-hidden .media {
+    clip-path: none;
   }
 }

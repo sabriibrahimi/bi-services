@@ -1,44 +1,46 @@
 import { Link } from 'react-router-dom'
 import { path } from '../config/routes.js'
 import { content } from '../data/content.js'
-import { t, useLanguage } from '../utils/i18n.js'
+import { t, tf, useLanguage } from '../utils/i18n.js'
 import { toneForIndex } from '../utils/tones.js'
 import Media from './Media.jsx'
 import './ProjectCard.css'
 
 /**
- * One project in a grid. `size` changes the crop and the type scale so a grid
- * of projects stays editorial instead of turning into a row of identical cards.
+ * One project in a grid. Every card uses the same 4 / 3 crop: the covers are
+ * phone photographs in every shape from portrait to panorama, and one steady
+ * frame reads as a considered series where mixed crops read as random. The
+ * grid itself provides the rhythm.
+ *
+ * The caption shows only what is known for certain: the project's number and
+ * how many photographs it holds. No location, year or description is shown
+ * until the client supplies real ones.
  */
-export default function ProjectCard({ project, index = 0, size = 'md', ratio, className = '' }) {
+export default function ProjectCard({ project, index = 0, ratio = '4 / 3', className = '' }) {
   const lang = useLanguage()
-  const ratios = { lg: '16 / 10', md: '4 / 3', sm: '3 / 4', tall: '3 / 4' }
-  // On a phone the cards stack full width, so the two portrait sizes would each
-  // fill most of the screen. They keep their place in the rhythm with a wider
-  // crop instead.
-  const ratiosSm = { lg: '16 / 10', md: '4 / 3', sm: '4 / 3', tall: '3 / 2' }
+  const photoCount = (project.cover ? 1 : 0) + (project.gallery?.length ?? 0)
 
   return (
-    <article className={`project-card project-card--${size} ${className}`.trim()}>
+    <article className={`project-card ${className}`.trim()}>
       <Link className="project-card__link" to={path('project', lang, project.slug[lang])}>
         <Media
           className="project-card__media"
           {...(project.cover ?? {})}
           label={project.coverPlaceholder ?? content.projectDetail.coverPlaceholderFallback}
           tone={toneForIndex(index)}
-          ratio={ratio ?? ratios[size] ?? ratios.md}
-          ratioSm={ratio ?? ratiosSm[size] ?? ratiosSm.md}
-          sizes="(min-width: 62rem) 45vw, 100vw"
+          ratio={ratio}
+          sizes="(min-width: 52rem) 46vw, 100vw"
         />
 
         <div className="project-card__body">
           <h3 className="project-card__title">{t(project.title, lang)}</h3>
-          <p className="project-card__meta">
-            <span>{t(project.location, lang)}</span>
-            <span aria-hidden="true">·</span>
-            <span>{project.year}</span>
-          </p>
-          <p className="project-card__service">{project.services[lang]?.[0]}</p>
+          {photoCount > 0 ? (
+            <p className="project-card__meta">
+              {photoCount === 1
+                ? t(content.projects.photoCountOne, lang)
+                : tf(content.projects.photoCountMany, lang, { count: photoCount })}
+            </p>
+          ) : null}
         </div>
       </Link>
     </article>

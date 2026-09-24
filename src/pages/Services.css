@@ -1,15 +1,13 @@
+/* The services page: one repeated structure per service — intro, what, process —
+   so the two services read as a pair rather than as two different layouts. */
+
 .service {
-  padding-block: clamp(2.5rem, 7vw, 5.5rem);
+  padding-block: clamp(3.5rem, 8vw, 7rem);
   border-top: 1px solid var(--c-rule);
 }
 
 .service--b {
   background-color: var(--c-paper);
-}
-
-.service__grid {
-  display: grid;
-  gap: var(--space-2xl);
 }
 
 .service__number {
@@ -43,50 +41,26 @@
   border-bottom: 1px solid var(--c-rule);
 }
 
-/* --- Process -------------------------------------------------------------- */
+/* --- 1. Intro: words beside the photograph that opens the service ---------- */
 
-.steps {
+.service__intro {
   display: grid;
-  gap: var(--space-lg);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
+  gap: var(--space-xl);
 }
 
-.steps__item {
+/* --- 2a. Parquet: the detail photograph beside the materials --------------- */
+
+.service__what {
   display: grid;
-  grid-template-columns: 2.5rem minmax(0, 1fr);
-  gap: var(--space-sm);
-  padding-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--c-rule);
+  gap: var(--space-xl);
+  margin-top: var(--space-3xl);
 }
 
-.steps__item:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
+/* On a phone the list comes before its photograph, so the lead and the detail
+   photographs are never stacked back to back. */
+.service__materials {
+  order: -1;
 }
-
-.steps__index {
-  font-size: var(--fs-micro);
-  letter-spacing: var(--tracking-wide);
-  color: var(--c-oak-deep);
-  padding-top: 0.35rem;
-}
-
-.steps__title {
-  font-size: var(--fs-base);
-  font-weight: 600;
-  margin-bottom: 0.15rem;
-}
-
-.steps__body {
-  font-size: var(--fs-sm);
-  color: var(--c-text-muted);
-  max-width: 48ch;
-}
-
-/* --- Materials ------------------------------------------------------------ */
 
 .materials {
   display: grid;
@@ -111,62 +85,161 @@
 .materials__note {
   font-size: var(--fs-sm);
   color: var(--c-text-muted);
+  max-width: 44ch;
+}
+
+/* --- 2b. Soft floors: each covering beside its own photographs ------------- */
+
+.range {
+  margin-top: var(--space-3xl);
+}
+
+.range__row {
+  display: grid;
+  gap: var(--space-lg);
+  padding-block: var(--space-xl);
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.range__row:first-of-type {
+  padding-top: var(--space-md);
+}
+
+.range__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-h3);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-sm);
+}
+
+.range__body {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
   max-width: 40ch;
 }
 
-/* --- Desktop composition -------------------------------------------------- */
+/* Two photographs of one covering, the first wider, both exactly the same
+   height: the row has a fixed proportion and each image fills its cell. */
+.range__pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: var(--space-sm);
+  aspect-ratio: 16 / 10;
+}
+
+.range__pair .media {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.range__note {
+  margin-top: var(--space-lg);
+}
+
+/* --- 3. Process ------------------------------------------------------------- */
+
+.service__process {
+  margin-top: var(--space-3xl);
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps__item {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.steps__index {
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-wide);
+  color: var(--c-oak-deep);
+  padding-top: 0.35rem;
+}
+
+.steps__title {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.steps__body {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  max-width: 48ch;
+}
+
+/* --- Tablet ----------------------------------------------------------------- */
+
+@media (min-width: 40rem) {
+  .range__pair {
+    aspect-ratio: 2 / 1;
+    gap: var(--space-md);
+  }
+}
+
+@media (min-width: 52rem) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  /* Two columns of steps: the last row in each column loses its rule. */
+  .steps__item:nth-last-child(-n + 2) {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* --- Desktop ---------------------------------------------------------------- */
 
 @media (min-width: 62rem) {
-  .service__grid {
+  .service__intro,
+  .service__what,
+  .range__row {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: clamp(1.5rem, 3vw, 3rem);
-    row-gap: clamp(2.5rem, 6vw, 5rem);
-    align-items: start;
+    align-items: center;
   }
 
-  /* Variant A — text left, tall photograph right, detail shot tucked under. */
-  .service--a .service__head {
-    grid-column: 1 / span 6;
-  }
-
-  .service--a .service__media {
-    grid-column: 8 / span 5;
-    grid-row: 1 / span 2;
-  }
-
-  .service--a .service__process {
-    grid-column: 1 / span 6;
-  }
-
-  .service--a .service__materials {
-    grid-column: 8 / span 5;
-  }
-
-  .service--a .service__detail {
-    grid-column: 1 / span 6;
-    align-self: end;
-  }
-
-  /* Variant B — photograph leads on the left, text steps in from the right. */
-  .service--b .service__media {
-    grid-column: 1 / span 5;
-    grid-row: 1 / span 2;
-  }
-
-  .service--b .service__head {
-    grid-column: 7 / span 6;
-  }
-
-  .service--b .service__process {
-    grid-column: 7 / span 6;
-  }
-
-  .service--b .service__materials {
+  /* Intro: text on the left, the lead photograph on the right. */
+  .service__head {
     grid-column: 1 / span 5;
   }
 
-  .service--b .service__detail {
+  .service__lead {
     grid-column: 7 / span 6;
-    align-self: end;
+  }
+
+  /* What: mirrored — photograph on the left, the list on the right. */
+  .service__detail {
+    grid-column: 1 / span 6;
+  }
+
+  .service__materials {
+    grid-column: 8 / span 5;
+    order: 0;
+  }
+
+  /* Each covering: its name and a few words, then its pair of photographs. */
+  .range__text {
+    grid-column: 1 / span 4;
+    align-self: start;
+    padding-top: var(--space-xs);
+  }
+
+  .range__pair {
+    grid-column: 6 / span 7;
+    aspect-ratio: 2.2 / 1;
   }
 }
