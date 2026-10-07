@@ -6,7 +6,7 @@ import PlaneMark from './PlaneMark.jsx'
 import './Wordmark.css'
 
 /**
- * The company signature: the hand-plane mark from the business card, the name,
+ * The company signature: the company's hand-plane mark, the name,
  * and — at the larger size — the baseline that goes with the mark.
  */
 export default function Wordmark({ as = 'link', size = 'md', className = '' }) {

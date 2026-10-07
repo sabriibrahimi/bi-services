@@ -6,7 +6,9 @@
 }
 
 .wordmark__mark {
-  width: 2.35rem;
+  /* The traced plane is wide and low (about 2.2 : 1); this width gives it the
+     same visual weight as the capitals beside it. */
+  width: 2.75rem;
   height: auto;
   flex: none;
   color: inherit;
@@ -56,7 +58,7 @@
 }
 
 .wordmark--lg .wordmark__mark {
-  width: clamp(2.75rem, 2.2rem + 1.6vw, 3.5rem);
+  width: clamp(3.2rem, 2.6rem + 1.8vw, 4.1rem);
 }
 
 .wordmark--lg .wordmark__name {

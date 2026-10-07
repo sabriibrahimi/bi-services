@@ -12,9 +12,10 @@ export const site = {
   founder: 'Blerim Ibrahimi',
 
   /**
-   * The hand-plane mark from the business card, as a standalone file (used for
-   * structured data and link previews). The same drawing is inlined in
-   * src/components/PlaneMark.jsx so it can inherit the text colour on screen.
+   * The hand-plane mark, traced from the logo the client supplied, as a
+   * standalone file (used for structured data and link previews). The same
+   * drawing is inlined in src/components/PlaneMark.jsx so it can inherit the
+   * text colour on screen; public/logo.svg is the full logo with its lettering.
    */
   logo: '/logo-mark.svg',
 
