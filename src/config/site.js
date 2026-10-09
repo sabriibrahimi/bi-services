@@ -8,7 +8,7 @@ import { origin } from './deployment.js'
 
 export const site = {
   // --- Identity -------------------------------------------------------------
-  companyName: 'BI SERVICES Sàrl',
+  companyName: 'BI SERVICES sàrl',
   founder: 'Blerim Ibrahimi',
 
   /**

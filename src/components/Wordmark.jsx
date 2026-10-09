@@ -18,7 +18,7 @@ export default function Wordmark({ as = 'link', size = 'md', className = '' }) {
       <span className="wordmark__type">
         <span className="wordmark__name">
           <span>BI SERVICES</span>
-          <span className="wordmark__legal">Sàrl</span>
+          <span className="wordmark__legal">sàrl</span>
         </span>
         {size === 'lg' ? (
           <span className="wordmark__baseline">{t(content.brand.baseline, lang)}</span>

@@ -31,7 +31,7 @@ export default function Home() {
           <p className="eyebrow">{t(content.home.heroEyebrow, lang)}</p>
           <h1 className="hero__title">
             <span className="hero__title-main">BI SERVICES</span>
-            <span className="hero__title-legal">Sàrl</span>
+            <span className="hero__title-legal">sàrl</span>
           </h1>
           {slogan ? (
             <p className="hero__slogan">{slogan}</p>

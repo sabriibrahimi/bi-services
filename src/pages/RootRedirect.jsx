@@ -20,13 +20,13 @@ export default function RootRedirect() {
     <>
       <Head>
         <html lang={DEFAULT_LANGUAGE} />
-        <title>BI SERVICES Sàrl — Pose et rénovation de sols</title>
+        <title>BI SERVICES sàrl — Pose et rénovation de sols</title>
         <meta httpEquiv="refresh" content={`0; url=${href}`} />
         <link rel="canonical" href={absoluteUrl(target)} />
         <meta name="robots" content="noindex, follow" />
       </Head>
       <p style={{ padding: '2rem' }}>
-        <a href={href}>BI SERVICES Sàrl</a>
+        <a href={href}>BI SERVICES sàrl</a>
       </p>
       <Navigate to={target} replace />
     </>

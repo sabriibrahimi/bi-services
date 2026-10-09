@@ -312,7 +312,7 @@ async function writeCredits() {
 
   const body = `# Image credits
 
-BI SERVICES Sàrl's own photographs, taken on its job sites:
+BI SERVICES sàrl's own photographs, taken on its job sites:
 
 - the parquet projects (\`photos-source/\`), on the projects pages;
 - the PVC / lino, carpet and vinyl photographs (\`photos-source/PVC-Lino\`,

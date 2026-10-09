@@ -59,7 +59,7 @@ export const content = {
     openMenu: { fr: 'Ouvrir le menu', en: 'Open menu' },
     closeMenu: { fr: 'Fermer le menu', en: 'Close menu' },
     menuLabel: { fr: 'Menu', en: 'Menu' },
-    homeLink: { fr: 'BI SERVICES Sàrl, retour à l’accueil', en: 'BI SERVICES Sàrl, back to home' },
+    homeLink: { fr: 'BI SERVICES sàrl, retour à l’accueil', en: 'BI SERVICES sàrl, back to home' },
   },
 
 
@@ -190,63 +190,63 @@ export const content = {
   meta: {
     home: {
       title: {
-        fr: 'BI SERVICES Sàrl — Pose et rénovation de sols',
-        en: 'BI SERVICES Sàrl — Flooring installation and renovation',
+        fr: 'BI SERVICES sàrl — Pose et rénovation de sols',
+        en: 'BI SERVICES sàrl — Flooring installation and renovation',
       },
       description: {
-        fr: 'BI SERVICES Sàrl, entreprise de pose de sols dirigée par Blerim Ibrahimi : pose, ponçage et imprégnation de parquet, pose de lino, PVC, moquette et vinyle.',
-        en: 'BI SERVICES Sàrl, a flooring company led by Blerim Ibrahimi: parquet installation, sanding and sealing, plus linoleum, PVC, carpet and vinyl installation.',
+        fr: 'BI SERVICES sàrl, entreprise de pose de sols dirigée par Blerim Ibrahimi : pose, ponçage et imprégnation de parquet, pose de lino, PVC, moquette et vinyle.',
+        en: 'BI SERVICES sàrl, a flooring company led by Blerim Ibrahimi: parquet installation, sanding and sealing, plus linoleum, PVC, carpet and vinyl installation.',
       },
     },
     services: {
       title: {
-        fr: 'Services — Pose, ponçage et sols souples | BI SERVICES Sàrl',
-        en: 'Services — Parquet, resilient floors and carpet | BI SERVICES Sàrl',
+        fr: 'Services — Pose, ponçage et sols souples | BI SERVICES sàrl',
+        en: 'Services — Parquet, resilient floors and carpet | BI SERVICES sàrl',
       },
       description: {
-        fr: 'Pose, ponçage et imprégnation de parquet ; pose de lino, PVC, moquette, vinyle. Préparation du support, exécution et finitions par BI SERVICES Sàrl.',
-        en: 'Parquet installation, sanding and sealing; installation of linoleum, PVC, carpet and vinyl. Subfloor preparation, execution and finishing by BI SERVICES Sàrl.',
+        fr: 'Pose, ponçage et imprégnation de parquet ; pose de lino, PVC, moquette, vinyle. Préparation du support, exécution et finitions par BI SERVICES sàrl.',
+        en: 'Parquet installation, sanding and sealing; installation of linoleum, PVC, carpet and vinyl. Subfloor preparation, execution and finishing by BI SERVICES sàrl.',
       },
     },
     projects: {
       title: {
-        fr: 'Réalisations — Chantiers de sols | BI SERVICES Sàrl',
-        en: 'Projects — Completed flooring work | BI SERVICES Sàrl',
+        fr: 'Réalisations — Chantiers de sols | BI SERVICES sàrl',
+        en: 'Projects — Completed flooring work | BI SERVICES sàrl',
       },
       description: {
-        fr: 'Une sélection de chantiers réalisés par BI SERVICES Sàrl : parquet, PVC et lino, moquette, vinyle.',
-        en: 'A selection of projects completed by BI SERVICES Sàrl: parquet, PVC and lino, carpet, vinyl.',
+        fr: 'Une sélection de chantiers réalisés par BI SERVICES sàrl : parquet, PVC et lino, moquette, vinyle.',
+        en: 'A selection of projects completed by BI SERVICES sàrl: parquet, PVC and lino, carpet, vinyl.',
       },
     },
     contact: {
       title: {
-        fr: 'Contact — Demander un devis | BI SERVICES Sàrl',
-        en: 'Contact — Request a quote | BI SERVICES Sàrl',
+        fr: 'Contact — Demander un devis | BI SERVICES sàrl',
+        en: 'Contact — Request a quote | BI SERVICES sàrl',
       },
       description: {
-        fr: 'Demander un devis à BI SERVICES Sàrl : téléphone, e-mail, horaires et formulaire de contact.',
-        en: 'Request a quote from BI SERVICES Sàrl: phone, email, opening hours and contact form.',
+        fr: 'Demander un devis à BI SERVICES sàrl : téléphone, e-mail, horaires et formulaire de contact.',
+        en: 'Request a quote from BI SERVICES sàrl: phone, email, opening hours and contact form.',
       },
     },
     legal: {
-      title: { fr: 'Mentions légales — BI SERVICES Sàrl', en: 'Legal notice — BI SERVICES Sàrl' },
+      title: { fr: 'Mentions légales — BI SERVICES sàrl', en: 'Legal notice — BI SERVICES sàrl' },
       description: {
-        fr: 'Mentions légales du site de BI SERVICES Sàrl.',
-        en: 'Legal notice for the BI SERVICES Sàrl website.',
+        fr: 'Mentions légales du site de BI SERVICES sàrl.',
+        en: 'Legal notice for the BI SERVICES sàrl website.',
       },
     },
     privacy: {
       title: {
-        fr: 'Politique de confidentialité — BI SERVICES Sàrl',
-        en: 'Privacy policy — BI SERVICES Sàrl',
+        fr: 'Politique de confidentialité — BI SERVICES sàrl',
+        en: 'Privacy policy — BI SERVICES sàrl',
       },
       description: {
-        fr: 'Politique de confidentialité du site de BI SERVICES Sàrl.',
-        en: 'Privacy policy for the BI SERVICES Sàrl website.',
+        fr: 'Politique de confidentialité du site de BI SERVICES sàrl.',
+        en: 'Privacy policy for the BI SERVICES sàrl website.',
       },
     },
     notFound: {
-      title: { fr: 'Page introuvable — BI SERVICES Sàrl', en: 'Page not found — BI SERVICES Sàrl' },
+      title: { fr: 'Page introuvable — BI SERVICES sàrl', en: 'Page not found — BI SERVICES sàrl' },
       description: {
         fr: 'La page demandée n’existe pas.',
         en: 'The requested page does not exist.',
@@ -275,8 +275,8 @@ export const content = {
       en: 'One trade, carried out from start to finish.',
     },
     introBody1: {
-      fr: 'BI SERVICES Sàrl est dirigée par Blerim Ibrahimi. L’entreprise pose et rénove des sols : parquet, linoléum, PVC, moquette et vinyle, dans des logements comme dans des locaux professionnels.',
-      en: 'BI SERVICES Sàrl is led by Blerim Ibrahimi. The company installs and renovates floors — parquet, linoleum, PVC, carpet and vinyl — in homes as well as commercial spaces.',
+      fr: 'BI SERVICES sàrl est dirigée par Blerim Ibrahimi. L’entreprise pose et rénove des sols : parquet, linoléum, PVC, moquette et vinyle, dans des logements comme dans des locaux professionnels.',
+      en: 'BI SERVICES sàrl is led by Blerim Ibrahimi. The company installs and renovates floors — parquet, linoleum, PVC, carpet and vinyl — in homes as well as commercial spaces.',
     },
     introBody2: {
       fr: 'Tout commence par le support : mesures, contrôle de l’humidité et de la planéité, préparation. C’est là que se décide la tenue du sol fini. Vient ensuite la pose, puis le ponçage et la finition, exécutés dans l’ordre et sans raccourci.',
@@ -637,8 +637,8 @@ export const content = {
       en: 'PHOTO PLACEHOLDER — PROJECT COVER PHOTO',
     },
     metaDescription: {
-      fr: '{title} : photographies d’un chantier de sols réalisé par BI SERVICES Sàrl.',
-      en: '{title}: photographs of a flooring job carried out by BI SERVICES Sàrl.',
+      fr: '{title} : photographies d’un chantier de sols réalisé par BI SERVICES sàrl.',
+      en: '{title}: photographs of a flooring job carried out by BI SERVICES sàrl.',
     },
   },
 

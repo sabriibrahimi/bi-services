@@ -47,7 +47,7 @@ export default function ProjectDetail() {
   return (
     <>
       <Seo
-        title={`${title} — ${metaPrefix} | BI SERVICES Sàrl`}
+        title={`${title} — ${metaPrefix} | BI SERVICES sàrl`}
         description={metaDescription}
         type="article"
       />
