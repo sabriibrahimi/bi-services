@@ -52,7 +52,7 @@ Nothing here is broken; these are gaps worth filling.
 
 | Item | Where it now lives |
 | --- | --- |
-| Logo | Traced as vectors from the logo the client supplied. The plane: `src/components/PlaneMark.jsx` (inline, inherits the text colour) and `public/logo-mark.svg`; the full logo with "travaux en bois / l'art de la vie": `public/logo.svg`. Favicon and home-screen icon generated from `public/favicon.svg`. |
+| Logo | Traced as vectors from the logo the client supplied. The plane: `src/components/PlaneMark.jsx` (inline, inherits the text colour) and `public/logo-mark.svg`; Favicon and home-screen icon generated from `public/favicon.svg`. |
 | Slogan | `site.slogan` — "Travaux en bois, l'art de la vie" |
 | Business descriptor | `content.brand.descriptor` and the footer tagline |
 | Address | `site.address` — Chemin François-Chavaz 24, 1213 Onex. Footer, contact page and LocalBusiness structured data. |
