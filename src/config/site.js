@@ -21,8 +21,8 @@ export const site = {
 
   /** Brand line from the business card, shown under the company name. */
   slogan: {
-    fr: 'Travaux en bois, l’art de la vie',
-    en: 'Woodwork, the art of living',
+    fr: 'Un sol en harmonie avec l’art de la vie',
+    en: 'A floor in harmony with the art of living',
   },
 
   // --- Contact --------------------------------------------------------------

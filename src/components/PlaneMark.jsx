@@ -1,11 +1,10 @@
 /**
  * The company's hand-plane mark, traced as vectors from the logo the client
- * supplied (the plane above "travaux en bois / l'art de la vie"). Inline,
+ * supplied (the plane above the company name). Inline,
  * rather than an <img>, so it inherits the surrounding text colour — the same
  * mark sits on the light header and the dark footer.
  *
- * public/logo-mark.svg is the identical drawing as a standalone file, and
- * public/logo.svg the full logo with its lettering.
+ * public/logo-mark.svg is the identical drawing as a standalone file.
  */
 export default function PlaneMark({ className = '' }) {
   return (

@@ -10,7 +10,7 @@
 export const content = {
   // ---------------------------------------------------------------- global --
   brand: {
-    baseline: { fr: 'travaux en bois — l’art de la vie', en: 'woodwork — the art of living' },
+    baseline: { fr: 'un sol en harmonie avec l’art de la vie', en: 'a floor in harmony with the art of living' },
     descriptor: {
       fr: 'Revêtement de sols, pose et ponçage de parquets, et tous travaux en bois.',
       en: 'Floor coverings, parquet laying and sanding, and all kinds of woodwork.',
