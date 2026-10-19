@@ -190,42 +190,42 @@ export const content = {
   meta: {
     home: {
       title: {
-        fr: 'BI SERVICES sàrl — Pose et rénovation de sols',
-        en: 'BI SERVICES sàrl — Flooring installation and renovation',
+        fr: 'Pose et ponçage de parquet à Genève · BI SERVICES sàrl',
+        en: 'Parquet installation & sanding in Geneva · BI SERVICES sàrl',
       },
       description: {
-        fr: 'BI SERVICES sàrl, entreprise de pose de sols dirigée par Blerim Ibrahimi : pose, ponçage et imprégnation de parquet, pose de lino, PVC, moquette et vinyle.',
-        en: 'BI SERVICES sàrl, a flooring company led by Blerim Ibrahimi: parquet installation, sanding and sealing, plus linoleum, PVC, carpet and vinyl installation.',
+        fr: 'Entreprise de sols à Onex (Genève) : pose, ponçage et imprégnation de parquet, pose de lino, PVC, moquette et vinyle. Devis sur place.',
+        en: 'Flooring company in Onex (Geneva): parquet installation, sanding and sealing, plus linoleum, PVC, carpet and vinyl. On-site quotes.',
       },
     },
     services: {
       title: {
-        fr: 'Services — Pose, ponçage et sols souples | BI SERVICES sàrl',
-        en: 'Services — Parquet, resilient floors and carpet | BI SERVICES sàrl',
+        fr: 'Parquet, lino, PVC, moquette, vinyle à Genève · BI SERVICES',
+        en: 'Parquet, lino, PVC, carpet, vinyl in Geneva · BI SERVICES',
       },
       description: {
-        fr: 'Pose, ponçage et imprégnation de parquet ; pose de lino, PVC, moquette, vinyle. Préparation du support, exécution et finitions par BI SERVICES sàrl.',
-        en: 'Parquet installation, sanding and sealing; installation of linoleum, PVC, carpet and vinyl. Subfloor preparation, execution and finishing by BI SERVICES sàrl.',
+        fr: 'Pose, ponçage et imprégnation de parquet ; pose de lino, PVC, moquette et vinyle à Genève. Préparation du support et finitions soignées.',
+        en: 'Parquet installation, sanding and sealing; linoleum, PVC, carpet and vinyl installation in Geneva. Careful subfloor preparation and finishing.',
       },
     },
     projects: {
       title: {
-        fr: 'Réalisations — Chantiers de sols | BI SERVICES sàrl',
-        en: 'Projects — Completed flooring work | BI SERVICES sàrl',
+        fr: 'Réalisations parquet et sols souples à Genève · BI SERVICES',
+        en: 'Parquet and flooring projects in Geneva · BI SERVICES',
       },
       description: {
-        fr: 'Une sélection de chantiers réalisés par BI SERVICES sàrl : parquet, PVC et lino, moquette, vinyle.',
-        en: 'A selection of projects completed by BI SERVICES sàrl: parquet, PVC and lino, carpet, vinyl.',
+        fr: 'Chantiers de parquet et poses de PVC, lino, moquette et vinyle réalisés par BI SERVICES sàrl à Genève.',
+        en: 'Parquet projects and PVC, linoleum, carpet and vinyl installations by BI SERVICES sàrl in Geneva.',
       },
     },
     contact: {
       title: {
-        fr: 'Contact — Demander un devis | BI SERVICES sàrl',
-        en: 'Contact — Request a quote | BI SERVICES sàrl',
+        fr: 'Devis parquet et revêtements de sol à Genève · BI SERVICES',
+        en: 'Parquet and flooring quote in Geneva · BI SERVICES',
       },
       description: {
-        fr: 'Demander un devis à BI SERVICES sàrl : téléphone, e-mail, horaires et formulaire de contact.',
-        en: 'Request a quote from BI SERVICES sàrl: phone, email, opening hours and contact form.',
+        fr: 'Demandez un devis à BI SERVICES sàrl à Onex (Genève) : téléphone, e-mail, horaires et formulaire de contact.',
+        en: 'Request a quote from BI SERVICES sàrl in Onex (Geneva): phone, email, opening hours and contact form.',
       },
     },
     legal: {
@@ -701,8 +701,8 @@ export const content = {
     photos: { fr: 'Photos', en: 'Photos' },
     photosOptional: { fr: 'facultatif', en: 'optional' },
     photosHint: {
-      fr: 'JPG, PNG, WebP ou HEIC. 10 Mo maximum par fichier, 5 fichiers au maximum.',
-      en: 'JPG, PNG, WebP or HEIC. 10 MB maximum per file, 5 files maximum.',
+      fr: 'JPG, PNG, WebP ou HEIC. 5 fichiers au maximum, 10 Mo par fichier et 20 Mo au total.',
+      en: 'JPG, PNG, WebP or HEIC. Up to 5 files, 10 MB per file and 20 MB in total.',
     },
     photosButton: { fr: 'Ajouter des photos', en: 'Add photos' },
     photosRemove: { fr: 'Retirer {name}', en: 'Remove {name}' },
@@ -750,6 +750,10 @@ export const content = {
       fileCount: {
         fr: '5 photos au maximum. Les fichiers en trop n’ont pas été ajoutés.',
         en: '5 photos maximum. The extra files were not added.',
+      },
+      fileTotal: {
+        fr: '{name} : non ajouté, les photos dépasseraient 20 Mo au total.',
+        en: '{name}: not added, the photos would exceed 20 MB in total.',
       },
     },
     successTitle: { fr: 'Message envoyé', en: 'Message sent' },

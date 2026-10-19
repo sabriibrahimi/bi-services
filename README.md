@@ -161,21 +161,37 @@ that re-declares `--media-ratio` at a breakpoint will not win. Override the
 
 ### Contact form
 
-`src/services/contactForm.js` is the only place that submits the form. Choose a
-back-end in `src/config/site.js`:
+`src/services/contactForm.js` is the only place that submits the form. The
+site uses its own handler, `server/contact-api`, set in `src/config/site.js`:
 
 ```js
-form: {
-  provider: 'formspree',
-  formspreeEndpoint: 'https://formspree.io/f/xxxxxxx',
-}
-// or
-form: { provider: 'netlify', netlifyFormName: 'contact' }
+form: { provider: 'server', endpoint: '/api/contact' }
 ```
 
-While `provider` is `null` the form still validates and still explains itself,
-but it never claims a message was sent: it asks the visitor to call or write
-instead.
+The handler runs on the server in a locked-down container and emails each
+request, photographs attached, to `info@bi-services.ch` through Infomaniak,
+with the client as Reply-To. It accepts posts only from the site's own domains,
+rate-limits each visitor (5 per 10 minutes, 20 a day), enforces the same size
+limits as the form (5 photos, 10 MB each, 20 MB in total), drops submissions
+that fill in the hidden `company` trap field, and never logs messages. Caddy
+forwards `/api/*` to it on `127.0.0.1:3001`.
+
+Deploy or update it on the server:
+
+```bash
+cd /opt/bi-services && git pull
+cd server/contact-api && docker compose up -d --build
+```
+
+Its settings live in `server/contact-api/.env` (copied from `.env.example`,
+`chmod 600`, never committed). `SMTP_PASS` is an Infomaniak device password
+created only for the form, so it can be revoked on its own. To test locally
+without sending anything, run it with `SMTP_DRY_RUN=1`.
+
+Formspree (`provider: 'formspree'`) and Netlify (`provider: 'netlify'`) still
+work as alternatives. With `provider: null` the form validates and explains
+itself, but never claims a message was sent: it asks the visitor to call or
+write instead.
 
 ### Map
 

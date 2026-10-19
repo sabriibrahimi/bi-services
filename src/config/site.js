@@ -31,8 +31,8 @@ export const site = {
     href: 'tel:+41799473943',
   },
   email: {
-    display: 'blerim_974@hotmail.fr',
-    href: 'mailto:blerim_974@hotmail.fr',
+    display: 'info@bi-services.ch',
+    href: 'mailto:info@bi-services.ch',
   },
 
   /**
@@ -85,18 +85,24 @@ export const site = {
   // --- Contact form ---------------------------------------------------------
   form: {
     /**
-     * 'formspree' | 'netlify' | null
+     * 'server' | 'formspree' | 'netlify' | null
+     * 'server' posts to the site's own handler (server/contact-api), which
+     * emails each request to info@bi-services.ch through Infomaniak.
      * While null, the form stays visible but explains that the online form is
      * not active yet and invites the visitor to call or write. It never pretends
      * a message was sent.
      */
-    provider: null, // FORM SERVICE TO BE PROVIDED
+    provider: 'server',
+    /** Path of the site's own handler, on the same domain as the site. */
+    endpoint: '/api/contact',
     /** Formspree endpoint, e.g. 'https://formspree.io/f/xxxxxxx'. */
     formspreeEndpoint: null,
     /** Netlify form name as declared in the static form. */
     netlifyFormName: 'contact',
     maxFiles: 5,
     maxFileSizeMb: 10,
+    /** All photographs together: keeps the email under mail-server limits. */
+    maxTotalMb: 20,
     acceptedFileTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'],
   },
 
@@ -113,7 +119,8 @@ export const hasMap = Boolean(site.map.embedUrl)
 
 /** True once a form back-end has been configured. */
 export const hasFormService = Boolean(
-  (site.form.provider === 'formspree' && site.form.formspreeEndpoint) ||
+  (site.form.provider === 'server' && site.form.endpoint) ||
+    (site.form.provider === 'formspree' && site.form.formspreeEndpoint) ||
     site.form.provider === 'netlify'
 )
 

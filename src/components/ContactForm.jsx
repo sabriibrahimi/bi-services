@@ -16,6 +16,8 @@ const EMPTY = {
   workType: '',
   surface: '',
   message: '',
+  // Anti-spam trap, kept empty by real visitors (see the hidden field below).
+  company: '',
 }
 
 export default function ContactForm() {
@@ -116,7 +118,19 @@ export default function ContactForm() {
       if (accepted.length > room) {
         problems.push(t(content.form.errors.fileCount, lang))
       }
-      const added = accepted.slice(0, Math.max(room, 0)).map((file) => ({
+      // All photographs together must stay under the email size limit.
+      const budget = site.form.maxTotalMb * 1024 * 1024
+      let total = current.reduce((sum, item) => sum + item.file.size, 0)
+      const fitting = []
+      accepted.slice(0, Math.max(room, 0)).forEach((file) => {
+        if (total + file.size > budget) {
+          problems.push(tf(content.form.errors.fileTotal, lang, { name: file.name }))
+          return
+        }
+        total += file.size
+        fitting.push(file)
+      })
+      const added = fitting.map((file) => ({
         file,
         url: URL.createObjectURL(file),
         key: `${file.name}-${file.size}-${file.lastModified}`,
@@ -159,6 +173,7 @@ export default function ContactForm() {
     setStatus('submitting')
     const result = await submitContactForm({
       ...values,
+      lang,
       files: files.map((item) => item.file),
     })
 
@@ -209,6 +224,22 @@ export default function ContactForm() {
       ) : null}
 
       <p className="form__intro">{t(content.contact.formIntro, lang)}</p>
+
+      {/* Anti-spam trap: hidden from people and from screen readers, but bots
+          that fill in every field fill this one too, and the server then
+          drops the submission. */}
+      <div className="visually-hidden" aria-hidden="true">
+        <label htmlFor={id('company')}>Company</label>
+        <input
+          id={id('company')}
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={values.company}
+          onChange={(event) => setField('company', event.target.value)}
+        />
+      </div>
 
       {errorSignal > 0 && errorEntries.length > 0 ? (
         <div className="form-note form-note--error" role="alert" tabIndex={-1} ref={summaryRef}>

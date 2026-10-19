@@ -4,12 +4,15 @@ Everything that is still a placeholder on the site, and the exact file where it
 is replaced. Nothing is invented: where a fact is missing, the site says so
 visibly instead of filling the gap.
 
-## 1. Still missing — `src/config/site.js`
+## 1. Site configuration — `src/config/site.js`
 
-| Placeholder | Field | Why it matters |
-| --- | --- | --- |
-| DOMAIN TO BE PROVIDED | `domain` | Canonical URLs, hreflang, Open Graph tags, `sitemap.xml` and `robots.txt` all derive from it. The build prints a warning while it is still the placeholder. |
-| FORM SERVICE TO BE PROVIDED | `form.provider` + `form.formspreeEndpoint` (or `'netlify'`) | Until one is set, the contact form validates and then asks the visitor to call or write — it never pretends a message was sent. |
+Nothing is missing here any more:
+
+- **Domain** — the live site is built with `VITE_SITE_ORIGIN=https://bi-services.ch`,
+  from which canonical URLs, hreflang, Open Graph tags, `sitemap.xml` and
+  `robots.txt` are generated (see `src/config/deployment.js`).
+- **Contact form** — handled by the site's own `server/contact-api`, which emails
+  each request to `info@bi-services.ch`.
 
 ## 2. Projects — `src/data/projects.js`
 

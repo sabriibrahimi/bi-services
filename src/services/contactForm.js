@@ -1,9 +1,11 @@
 import { hasFormService, site } from '../config/site.js'
+import { withBase } from '../config/deployment.js'
 
 /**
  * All contact-form submission logic lives behind this one function.
  *
  * Configure the back-end in src/config/site.js:
+ *   form.provider = 'server'     + form.endpoint          = '/api/contact'
  *   form.provider = 'formspree'  + form.formspreeEndpoint = 'https://formspree.io/f/xxxx'
  *   form.provider = 'netlify'    + form.netlifyFormName   = 'contact'
  *
@@ -18,6 +20,9 @@ export async function submitContactForm(values) {
   }
 
   try {
+    if (site.form.provider === 'server') {
+      return await submitToServer(values)
+    }
     if (site.form.provider === 'formspree') {
       return await submitToFormspree(values)
     }
@@ -39,10 +44,27 @@ function toFormData(values) {
   if (values.workType) data.append('workType', values.workType)
   if (values.surface) data.append('surface', values.surface)
   data.append('message', values.message)
+  // Anti-spam trap: a field real visitors never see. Bots fill it in.
+  data.append('company', values.company ?? '')
+  if (values.lang) data.append('lang', values.lang)
   values.files?.forEach((file, index) => {
     data.append(`photo-${index + 1}`, file, file.name)
   })
   return data
+}
+
+/** The site's own handler (server/contact-api), on the same domain. */
+async function submitToServer(values) {
+  const response = await fetch(withBase(site.form.endpoint), {
+    method: 'POST',
+    headers: { Accept: 'application/json' },
+    body: toFormData(values),
+  })
+
+  if (!response.ok) {
+    return { status: 'error', error: new Error(`Form handler responded ${response.status}`) }
+  }
+  return { status: 'success' }
 }
 
 async function submitToFormspree(values) {
