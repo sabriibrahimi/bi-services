@@ -245,6 +245,13 @@ const transporter = DRY_RUN
       port: SMTP_PORT,
       secure: SMTP_PORT === 465,
       auth: { user: SMTP_USER, pass: SMTP_PASS },
+      // Give up quickly rather than keep the visitor waiting: an unreachable
+      // mail server (for example a hosting provider blocking outgoing mail
+      // ports) then shows the form's "please call or write" message within
+      // seconds instead of minutes.
+      connectionTimeout: 15_000,
+      greetingTimeout: 15_000,
+      socketTimeout: 30_000,
     })
 
 function buildMail(form, files) {
